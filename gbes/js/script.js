@@ -24,6 +24,7 @@ function init(){
         zoom: 16
     });
     myMap.behaviors.disable('scrollZoom');
+    myMap.behaviors.disable('drag');
     myPlacemark = new ymaps.Placemark([55.709622, 37.624885], { hintContent: 'ГБЭС', balloonContent: 'Холодильный переулок д.3, корп.1, оф. 4402' });
 
     myMap.geoObjects.add(myPlacemark);
