@@ -336,6 +336,8 @@
     letter-spacing: 3px; }
   .content-about__conteiner-img {
     padding-bottom: 15px; }
+  .content-about__img {
+    width: 100%; }
   .content-about__text {
     color: #333;
     padding-bottom: 15px;
