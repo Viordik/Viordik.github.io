@@ -5,6 +5,8 @@ var menu = document.querySelector('.menu-nav');
 btnMenu.addEventListener('click', function () {
   menu.classList.toggle('menu-nav--active');
 });
+//===============================================
+//Активный пункт меню
 
 //===============================================
 //Раскрывающиеся блоки с историей компании на странице "О компании"
@@ -17,32 +19,43 @@ console.log(lotHouse);
 
 Array.prototype.forEach.call(yearButtons, function(yearButton, index) {
   yearButton.addEventListener('click', function(evt) {
-    blockHide[index].classList.toggle('history-company__text-hide--active');
-    // lotHouse[index].classList.toggle('lot-house__description-hide--active');
-    // news[index].classList.toggle('text-hide--active');
+
+      // blockHide[index].classList.toggle('history-company__text-hide--active');
+
+      lotHouse[index].classList.toggle('lot-house__description-hide--active');
+
+      // news[index].classList.toggle('text-hide--active');
+
   })
 });
 
 //===============================================
 
-// $(document).ready(function(){
-//   $('.owl-carousel').owlCarousel({
-//     loop:true,
-//     margin:10,
-//     nav:true,
-//     responsive:{
-//         0:{
-//           item:1
-//         },
-//         600:{
-//           item:3
-//         },
-//         1000:{
-//           item:5
-//         }
-//     }
-//   })
-// });
+
+$(document).ready(function(){
+  $('.services').slick({
+    autoplay: true,
+    autoplaySpeed: 1900,
+    dots: true,
+    infinite: true,
+    speed: 300,
+    slidesToShow: 1,
+    // adaptiveHeight: true,
+    // centerMode: true
+  });
+});
+
+$(document).ready(function(){
+  $('.our-clients__wrapper').slick({
+    autoplay: true,
+    autoplaySpeed: 1900,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    dots: true,
+    centerMode: true,
+  });
+});
+
 
 
 //===============================================

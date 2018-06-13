@@ -4,10 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <!-- <link rel="stylesheet" href="./assets/owl.carousel.min.css">
-  <link rel="stylesheet" href="./assets/owl.theme.default.min.css"> -->
 
   <link rel="stylesheet" href="css/style.min.css">
+
+  <link rel="stylesheet" type="text/css" href="slick/slick.css"/>
+
+  <link rel="stylesheet" type="text/css" href="slick/slick-theme.css"/>
 
   <title>ГБЭС</title>
 </head>
@@ -16,7 +18,7 @@
     <header class="page-header">
       <section class="menu">
         <div class="menu__item">
-          <img class="menu__logo" src="http://dhiglobal.com/wp-content/uploads/2016/07/placeholder.jpg" alt="logo-company" width="100" height="90">
+          <a href="./index.html"><img class="menu__logo" src="./img/gbes_logo.svg" alt="logo-company" width="100%" height="100%"></a>
           <button class="menu__btn" type="button"></button>
         </div>
         <nav class="menu-nav">
@@ -43,7 +45,6 @@
     </header>
     <main class="page-main">
       <section class="services owl-carousel owl-theme">
-        <!-- <button type="button">L</button> -->
         <div class="services__item">
           <h2 class="services__item-caption">аукционная деятельность</h2>
           <p class="services__item-text">Аукционы (торги) по продаже движимого и недвижимого
@@ -55,7 +56,7 @@
           <h2 class="services__item-caption">юридические услуги</h2>
           <p class="services__item-text">Опыт, профессионализм и упорство в достижении
             положительного результата, помогают нам максимально эффективно решить Ваши проблемы.</p>
-          <a class="services__item-link" href="#">подробнее</a>
+          <a class="services__item-link" href="./legal-services.html">подробнее</a>
         </div>
         <div class="services__item">
           <h2 class="services__item-caption">оценка всех видов имущества</h2>
@@ -64,7 +65,6 @@
             промышленного и офисного оборудования, товарных знаков, патентов и иной интеллектуальной собственности.</p>
           <a class="services__item-link" href="./assessment.html">подробнее</a>
         </div>
-        <!-- <button type="button">R</button> -->
       </section>
 
       <section class="news-bargaining">
@@ -125,6 +125,30 @@
         </div>
       </section>
 
+      <section class="our-clients">
+        <h2 class="news-bargaining__caption">наши клиенты</h2>
+        <div class="our-clients__wrapper">
+          <div class="our-clients__wrapper-img">
+            <img class="our-clients__img" src="http://dhiglobal.com/wp-content/uploads/2016/07/placeholder.jpg" alt="logo-company" width="auto" height="100%">
+          </div>
+
+          <div class="our-clients__wrapper-img">
+            <img class="our-clients__img" src="http://dhiglobal.com/wp-content/uploads/2016/07/placeholder.jpg" alt="logo-company" width="auto" height="100%">
+          </div>
+
+          <div class="our-clients__wrapper-img">
+            <img class="our-clients__img" src="http://dhiglobal.com/wp-content/uploads/2016/07/placeholder.jpg" alt="logo-company" width="auto" height="100%">
+          </div>
+
+          <div class="our-clients__wrapper-img">
+            <img class="our-clients__img" src="http://dhiglobal.com/wp-content/uploads/2016/07/placeholder.jpg" alt="logo-company" width="auto" height="100%">
+          </div>
+        </div>
+        <div>
+          <a class="news-bargaining__all-publications" href="./reviews.html">Отзывы</a>
+        </div>
+      </section>
+
       <section class="application">
         <h2 class="application__caption">Свяжитесь с нами уже сегодня или назначьте встречу c нашим специалистом</h2>
         <form action="" class="form">
@@ -155,7 +179,7 @@
           </div>
           <div class="contacts__item">
             <p class="contacts__item-text">Приезжайте в гости</p>
-            <a class="contacts__item-link" href="#">г.Москва,
+            <a class="contacts__item-link" >г.Москва,
               Холодильный переулок д.3, корп.1, оф. 4402</a>
           </div>
         </div>
@@ -177,8 +201,11 @@
       </section>
     </footer>
   </div>
-  <!-- <script src="./assets/jquery-3.3.1.min.js"></script>
-  <script src="./assets/owl.carousel.min.js"></script> -->
+
+  <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+  <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+  <script type="text/javascript" src="slick/slick.min.js"></script>
+
   <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
   <script src="js/script.js"></script>
 </body>
