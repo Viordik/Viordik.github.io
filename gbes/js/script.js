@@ -30,35 +30,6 @@ Array.prototype.forEach.call(yearButtons, function(yearButton, index) {
 });
 
 //===============================================
-
-
-$(document).ready(function(){
-  $('.services').slick({
-    autoplay: true,
-    autoplaySpeed: 1900,
-    dots: true,
-    infinite: true,
-    speed: 300,
-    slidesToShow: 1,
-    // adaptiveHeight: true,
-    // centerMode: true
-  });
-});
-
-$(document).ready(function(){
-  $('.our-clients__wrapper').slick({
-    autoplay: true,
-    autoplaySpeed: 1900,
-    slidesToShow: 3,
-    slidesToScroll: 1,
-    dots: true,
-    centerMode: true,
-  });
-});
-
-
-
-//===============================================
 // Yandex Map
 
 ymaps.ready(init);
@@ -75,3 +46,27 @@ function init(){
 
     myMap.geoObjects.add(myPlacemark);
 }
+
+//===============================================
+// Карусуль на главной странице
+$(document).ready(function(){
+  $('.services').slick({
+    autoplay: true,
+    autoplaySpeed: 1900,
+    dots: true,
+    infinite: true,
+    speed: 300,
+    slidesToShow: 1,
+  });
+});
+
+$(document).ready(function(){
+  $('.our-clients__wrapper').slick({
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 2000,
+    dots: true,
+    variableWidth: true,
+  });
+});
