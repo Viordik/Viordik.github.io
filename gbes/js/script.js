@@ -70,3 +70,16 @@ $(document).ready(function(){
     variableWidth: true,
   });
 });
+
+// Карусель на странице Лот
+$(document).ready(function(){
+  $('.lot-img').slick({
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 2000,
+    dots: true,
+    variableWidth: true,
+  });
+});
+//================================================
