@@ -653,6 +653,7 @@
 .lot-img {
   margin-bottom: 40px; }
   .lot-img__wrapper {
+    outline: none;
     line-height: 0;
     padding: 0 20px; }
   .lot-img__elem {
