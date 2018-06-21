@@ -109,13 +109,59 @@
       border-top: 1px solid #ffffff; }
     .menu-list__item:not(:last-child) {
       border-bottom: 1px solid #8b1a1a; }
+  .menu-list__dropdown {
+    display: none;
+    padding: 0;
+    list-style: none; }
+    .menu-list__dropdown--active {
+      padding: 6px 0;
+      position: relative;
+      z-index: 2;
+      display: block; }
   .menu-list__item-link {
     font-size: 16px;
     font-weight: 700;
     color: #fff;
     text-decoration: none; }
-  .menu-list__dropdown {
-    list-style: none; }
+
+.open {
+  display: inline-block;
+  cursor: pointer;
+  position: relative;
+  bottom: -2px;
+  left: 10px;
+  height: 15px;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  transition: 0.5s ease; }
+  .open--active {
+    -ms-transform: rotate(-180deg);
+        transform: rotate(-180deg);
+    transition: 0.5s ease; }
+  .open::after {
+    content: '';
+    position: absolute;
+    left: 7px;
+    top: 3px;
+    width: 2px;
+    height: 8px;
+    background-color: #fff;
+    -ms-transform: rotate(45deg);
+        transform: rotate(45deg); }
+  .open::before {
+    content: '';
+    position: absolute;
+    left: 2px;
+    top: 3px;
+    width: 2px;
+    height: 8px;
+    background-color: #fff;
+    -ms-transform: rotate(-45deg);
+        transform: rotate(-45deg); }
+
+.second-menu {
+  padding: 6px 5px; }
 
 .news-bargaining {
   margin-top: 30px; }
@@ -672,7 +718,7 @@
     font-size: 16px;
     text-transform: uppercase;
     padding-bottom: 10px; }
-  .documents__list-item:not(:nth-child(3n)) {
+  .documents__list-item:not(:nth-child(4n)) {
     padding-bottom: 5px; }
   .documents__icon {
     margin-right: 10px; }
@@ -681,6 +727,9 @@
     text-transform: uppercase;
     font-size: 14px;
     text-decoration: underline #333; }
+    .documents__link-text:hover {
+      color: #e00;
+      text-decoration: underline #e00; }
 
 .auction-activity__caption {
   padding-bottom: 10px;
@@ -895,6 +944,16 @@
   .menu-list__item:nth-child(n) {
     border: none; }
 
+  .menu-list__dropdown a:hover {
+    color: #fff; }
+
+  .menu-list__dropdown--active {
+    position: absolute;
+    width: 364px;
+    top: 96%;
+    left: -152px;
+    background-color: #cd2626; }
+
   .menu-list__item-link {
     color: #222222; }
 
@@ -905,6 +964,18 @@
   .menu-list__item-link--active {
     padding-bottom: 10px;
     border-bottom: 2px solid #cd2626; }
+
+  .open::after {
+    background-color: #333; }
+
+  .open::before {
+    background-color: #333; }
+
+  .second-menu:not(:last-child) {
+    border-bottom: 1px solid #8b1a1a; }
+
+  .second-menu:not(:first-child) {
+    border-top: 1px solid #fff; }
 
   .news-bargaining__wrapper {
     display: -ms-flexbox;
