@@ -6,12 +6,11 @@ btnMenu.addEventListener('click', function () {
   menu.classList.toggle('menu-nav--active');
 });
 //===============================================
-//Активный пункт меню
+//Выпадающее подменю
 var secondMenu = document.querySelector('.menu-list__dropdown');
 var open = document.querySelector('.open');
 
 open.addEventListener('click', function () {
-  // open.style.transform = 'rotate(-180deg)';
   open.classList.toggle('open--active');
   secondMenu.classList.toggle('menu-list__dropdown--active');
 });
