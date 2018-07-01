@@ -1,0 +1,136 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0; }
+
+.lol {
+  display: -ms-flexbox;
+  display: flex; }
+
+.item {
+  margin-bottom: 30px;
+  max-width: 150px;
+  text-align: center; }
+
+.block-link {
+  text-decoration: none; }
+
+.name-book {
+  color: #1874CD;
+  font-weight: 700;
+  font-size: 20px; }
+
+.author {
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 21px;
+  color: #000; }
+
+.price {
+  font-size: 16px;
+  line-height: 21px;
+  color: #000; }
+
+.discount {
+  font-size: 16px;
+  line-height: 21px;
+  color: #000; }
+
+.page-link {
+  margin-top: 100px; }
+
+.table {
+  display: none;
+  border-collapse: collapse; }
+  .table--active {
+    display: block; }
+
+th, td {
+  border: 1px solid;
+  empty-cells: show; }
+
+.link-mail {
+  color: #000;
+  font-size: 25px;
+  text-transform: uppercase; }
+
+.page-body {
+  width: 960px;
+  margin: 100px auto;
+  padding: 20px;
+  box-shadow: 0 0 10px 4px rgba(0, 0, 0, 0.5); }
+
+.header {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: justify;
+      justify-content: space-between;
+  -ms-flex-align: end;
+      align-items: flex-end;
+  padding-bottom: 20px;
+  border-bottom: 2px solid #1874CD;
+  margin-bottom: 20px; }
+
+.caption--h1 {
+  margin-bottom: 15px;
+  color: #EE0000;
+  font-size: 30px;
+  text-align: center;
+  font-weight: 300; }
+
+.content {
+  margin: 0 170px;
+  padding-bottom: 20px;
+  display: -ms-flexbox;
+  display: flex; }
+  .content__left {
+    margin-right: 20px; }
+
+.text {
+  font-size: 16px;
+  line-height: 20px; }
+  .text--author {
+    font-style: italic;
+    font-size: 20px; }
+  .text--book {
+    color: #1874CD;
+    font-weight: 700;
+    font-size: 17px; }
+  .text--blue {
+    color: #1874CD;
+    text-decoration: underline; }
+
+.wrapper-header {
+  padding-bottom: 10px;
+  border-bottom: 2px dotted rgba(0, 0, 0, 0.5);
+  margin-bottom: 10px; }
+
+.wrapper-text {
+  text-align: center; }
+
+.btn {
+  margin-top: 10px;
+  display: block;
+  text-align: center;
+  border-radius: 5px;
+  max-width: 200px;
+  padding: 5px;
+  color: #fff;
+  text-decoration: none;
+  text-transform: uppercase;
+  background-color: #1874CD; }
+
+.img__book {
+  margin-bottom: 10px; }
+
+.footer {
+  padding-top: 10px;
+  border-top: 2px solid #1874CD; }
+
+.link {
+  color: #000;
+  text-decoration: none;
+  font-size: 20px; }
+  .link--two {
+    color: #1874CD;
+    text-decoration: none; }
