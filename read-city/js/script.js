@@ -47,7 +47,7 @@ $.ajax ({
       $('.lol').append(
         // '<div class="item">' +
           '<a href="#table" class="block-link">' +
-            '<img src="" width="140" height="200">' +
+            '<img src="'+ value.picture +'" width="140" height="200">' +
             '<p class="name-book">' + value.name + '</p>' +
             '<p class="author">'+ value.author.last + '</p>' +
             '<p class="price">' + value.price + '</p>' +
@@ -58,15 +58,17 @@ $.ajax ({
   }
 });
 
-const item = document.querySelectorAll('.block-link');
-const table = document.querySelector('.table');
+// const item = document.querySelectorAll('.block-link');
+// const table = document.querySelector('.table');
 
 
-Array.prototype.forEach.call(item, function(item) {
-  item.addEventListener('click', function() {
-    table.classList.toggle('table--active');
-  })
-});
+// Array.prototype.forEach.call(item, function(item) {
+//   item.addEventListener('click', function() {
+//     table.classList.toggle('table--active');
+//   })
+// });
+
+
 
 $(document).ready(function(){
   $('.carusel').slick({
