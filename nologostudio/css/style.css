@@ -1,0 +1,216 @@
+@font-face {
+  font-family: 'Roboto';
+  src: url("../fonts/roboto-v18-latin-300.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'Roboto';
+  src: url("../fonts/roboto-v18-latin-regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'Roboto';
+  src: url("../fonts/roboto-v18-latin-700.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal; }
+
+* {
+  font-family: 'Roboto', sans-serif;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0; }
+
+.page-body {
+  max-width: 960px;
+  margin: 0 auto; }
+
+.page-main {
+  position: relative; }
+  .page-main::after {
+    content: url("../img/background-grey-two.png");
+    position: absolute;
+    top: 760px;
+    left: -489px;
+    z-index: -2; }
+
+.header-up {
+  margin-top: 32px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #b0b3bb;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: justify;
+      justify-content: space-between;
+  -ms-flex-align: end;
+      align-items: flex-end; }
+  .header-up__phone {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+        align-items: center;
+    margin-bottom: 7px;
+    margin-left: 35%; }
+
+.phone-link {
+  color: #515359;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 18px; }
+
+.order-site {
+  display: inline-block;
+  font-size: 16px;
+  font-weight: 700;
+  color: #cb003d;
+  text-decoration: none;
+  border: 2px solid #b0b3bb;
+  border-radius: 30px;
+  padding: 10px 30px; }
+
+.menu-nav {
+  margin-top: 36px; }
+
+.menu-list {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: start;
+      justify-content: flex-start;
+  list-style: none; }
+  .menu-list__item {
+    padding-right: 50px; }
+  .menu-list__link {
+    text-decoration: none;
+    color: #515359;
+    text-transform: uppercase;
+    font-size: 13px;
+    font-weight: 700; }
+
+.content-up {
+  margin-top: 77px;
+  position: relative; }
+  .content-up::after {
+    position: absolute;
+    content: url("../img/background-grey.png");
+    z-index: -3;
+    top: -65px;
+    left: -489px; }
+
+.block-picture-mac {
+  position: absolute;
+  z-index: -2;
+  right: -78px; }
+
+.block {
+  position: relative;
+  top: 144px; }
+  .block__h1, .block__text {
+    font-size: 60px;
+    padding-right: 50%;
+    color: #fff; }
+  .block__text {
+    font-weight: 300; }
+  .block__price {
+    font-size: 100px;
+    color: #3a3c40;
+    font-weight: 700; }
+  .block__order {
+    margin-top: 50px;
+    display: inline-block;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 700;
+    color: #fff;
+    background-color: #cb003d;
+    border-radius: 30px;
+    padding: 10px 30px; }
+
+.about-company {
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 50%; }
+
+.left__h2 {
+  font-size: 30px;
+  color: #3a3c40;
+  padding-bottom: 134px; }
+
+.left__text {
+  font-size: 17px;
+  color: #747780;
+  padding-bottom: 53px;
+  line-height: 30px; }
+
+.left__word-web {
+  font-weight: 700;
+  color: #3a3c40; }
+
+.left__word-store {
+  color: #cb003d; }
+
+.first {
+  padding-bottom: 0; }
+
+.right__pencil {
+  position: relative;
+  top: -50px; }
+
+.footer-map {
+  margin: 0 -469px;
+  position: relative;
+  line-height: 1;
+  margin-top: 80px;
+  z-index: -4; }
+  .footer-map__marker {
+    position: absolute;
+    z-index: 2;
+    left: 50%;
+    top: 30%; }
+
+.page-footer {
+  position: relative; }
+
+.footer-contacts {
+  position: absolute;
+  padding: 30px 185px 30px 33px;
+  display: -ms-flexbox;
+  display: flex;
+  bottom: 0;
+  background-color: #fff;
+  max-width: 1025px; }
+  .footer-contacts__adress, .footer-contacts__phone, .footer-contacts__email, .footer-contacts__skype {
+    display: -ms-flexbox;
+    display: flex; }
+  .footer-contacts__phone, .footer-contacts__skype {
+    padding-top: 20px; }
+  .footer-contacts__adress {
+    padding-right: 130px; }
+  .footer-contacts__text {
+    color: #3a3c40;
+    font-size: 13px;
+    font-weight: 700; }
+    .footer-contacts__text--adress {
+      padding-right: 49px; }
+    .footer-contacts__text--phone {
+      padding-right: 20px; }
+    .footer-contacts__text--skype, .footer-contacts__text--email {
+      padding-right: 12px; }
+  .footer-contacts__text-two {
+    display: block;
+    color: #747780;
+    font-size: 13px;
+    text-decoration: none; }
+  .footer-contacts__text-email {
+    font-size: 13px;
+    color: #cb003d; }
+  .footer-contacts__copy {
+    font-size: 13px;
+    color: #747780;
+    padding-top: 33px; }
+
+.phone {
+  padding-top: 18px; }
+
+.street {
+  padding-top: 13px; }
