@@ -71,7 +71,7 @@ if (document.querySelector('#map')) {
           autoplaySpeed: 1900,
           dots: true,
           infinite: true,
-          speed: 900,
+          speed: 2500,
           slidesToShow: 1,
         });
       });
