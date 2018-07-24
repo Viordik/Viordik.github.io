@@ -68,10 +68,10 @@ if (document.querySelector('#map')) {
       $(document).ready(function(){
         $('.services').slick({
           autoplay: true,
-          autoplaySpeed: 1900,
+          autoplaySpeed: 2500,
           dots: true,
           infinite: true,
-          speed: 2500,
+          speed: 4000,
           slidesToShow: 1,
         });
       });
