@@ -1,0 +1,24 @@
+* {
+  box-sizing: border-box;
+}
+
+.page-body {
+  max-width: 1260px;
+  margin: 0 auto;
+}
+
+.needToTry {
+  border: 10px solid #333;
+}
+
+@media(min-width: 768px) {
+  .page-body {
+    padding: 0 40px;
+  }
+}
+
+@media(min-width: 376px) {
+  .page-body {
+    padding: 0 20px;
+  }
+}

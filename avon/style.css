@@ -1,0 +1,546 @@
+@font-face {
+  font-family: "HelveticaBold";
+  src: url("https://www.avon.ru/REPSuite/static/fonts/HelveticaBold/HelveticaBold.eot");
+  src: url("https://www.avon.ru/REPSuite/static/fonts/HelveticaBold/HelveticaBold.eot?#iefix") format("embedded-opentype"), url("https://www.avon.ru/REPSuite/static/fonts/HelveticaBold/HelveticaBold.woff") format("woff"), url("https://www.avon.ru/REPSuite/static/fonts/HelveticaBold/HelveticaBold.ttf") format("truetype");
+  font-style: normal;
+  font-weight: normal;
+}
+@font-face {
+  font-family: "HelveticaLight";
+  src: url("https://www.avon.ru/REPSuite/static/fonts/HelveticaLight/HelveticaLight.eot");
+  src: url("https://www.avon.ru/REPSuite/static/fonts/HelveticaLight/HelveticaLight.eot?#iefix") format("embedded-opentype"), url("https://www.avon.ru/REPSuite/static/fonts/HelveticaLight/HelveticaLight.woff") format("woff"), url("https://www.avon.ru/REPSuite/static/fonts/HelveticaLight/HelveticaLight.ttf") format("truetype");
+  font-style: normal;
+  font-weight: normal;
+}
+@font-face {
+  font-family: "HelveticaRegular";
+  src: url("https://www.avon.ru/REPSuite/static/fonts/HelveticaRegular/HelveticaRegular.eot");
+  src: url("https://www.avon.ru/REPSuite/static/fonts/HelveticaRegular/HelveticaRegular.eot?#iefix") format("embedded-opentype"), url("https://www.avon.ru/REPSuite/static/fonts/HelveticaRegular/HelveticaRegular.woff") format("woff"), url("https://www.avon.ru/REPSuite/static/fonts/HelveticaRegular/HelveticaRegular.ttf") format("truetype");
+  font-style: normal;
+  font-weight: normal;
+}
+@font-face {
+  font-family: "ALSRubl";
+  src: url("https://www.avon.ru/REPSuite/static/fonts/ASL-RUBL/ALSRubl.eot");
+  src: url("https://www.avon.ru/REPSuite/static/fonts/ASL-RUBL/ALSRubl.eot?#iefix") format("embedded-opentype"), url("https://www.avon.ru/REPSuite/static/fonts/ASL-RUBL/ALSRubl.woff") format("woff"), url("https://www.avon.ru/REPSuite/static/fonts/ASL-RUBL/ALSRubl.ttf") format("truetype");
+  font-style: normal;
+  font-weight: normal;
+}
+/** DIDOT **/
+@-webkit-keyframes snow-one-desktop {
+  0% {
+    -webkit-transform: translate(0, 0);
+            transform: translate(0, 0);
+  }
+  100% {
+    -webkit-transform: translate(0, 16000px);
+            transform: translate(0, 16000px);
+  }
+}
+@keyframes snow-one-desktop {
+  0% {
+    -webkit-transform: translate(0, 0);
+            transform: translate(0, 0);
+  }
+  100% {
+    -webkit-transform: translate(0, 16000px);
+            transform: translate(0, 16000px);
+  }
+}
+* {
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-collapse: collapse;
+}
+/* * img {
+  width: auto !important;
+} */
+.rub {
+  text-transform: lowercase;
+  font-family: "ALSRubl";
+}
+/* .simpleBanner {
+  width: 951px;
+  height: 283px;
+  text-align: center;
+  position: relative;
+  display: block;
+  text-decoration: none;
+  color: #000000;
+} */
+/* .simpleBanner .simpleBanner__claim {
+  display: block;
+}
+.simpleBanner .simpleBanner__price {
+  display: block;
+}
+.simpleBanner .simpleBanner__get {
+  display: block;
+}
+.simpleBanner .simpleBanner__discount {
+  color: #bd0008;
+  font-family: "HelveticaBold";
+  font-size: 62px;
+  line-height: 62px;
+  position: absolute;
+  bottom: 120px;
+  left: 50%;
+  -webkit-transform: translate(-50%, 0);
+      -ms-transform: translate(-50%, 0);
+          transform: translate(-50%, 0);
+}
+.simpleBanner .simpleBanner__toBuy {
+  display: inline-block;
+  width: 170px;
+  height: 52px;
+  line-height: 50px;
+  font-size: 14px;
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  position: absolute;
+  bottom: 27px;
+  left: 50%;
+  -webkit-transform: translate(-50%, 0);
+      -ms-transform: translate(-50%, 0);
+          transform: translate(-50%, 0);
+  text-transform: uppercase;
+  font-weight: bold;
+  background: #fff;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border: 1px solid #000000;
+  text-decoration: none;
+  color: #000000;
+  -webkit-transition: all 0.12s linear 0s;
+  transition: all 0.12s linear 0s;
+}
+.simpleBanner:hover {
+  color: #000000;
+}
+.simpleBanner:hover .simpleBanner__toBuy {
+  color: #ffffff;
+  background: #000;
+}
+.anewshka {
+  background: url("/mediaMarket-ru/1198/anewshka.jpg") no-repeat;
+}
+.anewshka .simpleBanner__claim {
+  font-family: "HelveticaLight";
+  font-size: 22px;
+  padding-top: 20px;
+  line-height: 24px;
+}
+.anewshka .simpleBanner__price {
+  font-family: "HelveticaBold";
+  font-size: 22px;
+  line-height: 24px;
+  margin-top: -2px;
+}
+.anewshka .simpleBanner__price .red {
+  color: #bd0008;
+}
+.anewshka .simpleBanner__price .rub {
+  color: #bd0008;
+}
+.anewshka .simpleBanner__get {
+  font-family: "HelveticaLight";
+  font-size: 22px;
+  line-height: 24px;
+  padding-top: 6px;
+  margin-bottom: 68px;
+}
+.anewshka .simpleBanner__term {
+  font-family: "HelveticaLight";
+  font-size: 15px;
+  line-height: 17px;
+} */
+/* .saleshka {
+  background: url("/mediaMarket-ru/1211/saleshka.jpg") no-repeat;
+}
+.saleshka .simpleBanner__claim {
+  font-size: 22px;
+  line-height: 24px;
+  font-family: "HelveticaBold";
+  text-transform: uppercase;
+  padding-top: 46px;
+}
+.saleshka .simpleBanner__get {
+  font-family: "HelveticaLight";
+  font-size: 22px;
+  line-height: 24px;
+}
+.ecsclusive {
+  width: 951px;
+  height: 597px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+.ecsclusive .ecsclusive-pillows {
+  width: 400px;
+}
+.ecsclusive .ecsclusive-sets {
+  width: 551px;
+}
+.ecsclusive .ecsclusive-sets .ecsclusive-block {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  height: 298px;
+  position: relative;
+}
+.ecsclusive .ecsclusive-sets .setOne img {
+  position: absolute;
+  left: 0;
+}
+.ecsclusive .ecsclusive-sets .setOne .ecsclusive-block__descr {
+  position: absolute;
+  right: 0;
+  top: 30px;
+}
+.ecsclusive .ecsclusive-sets .setTwo {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+  -webkit-flex-direction: row-reverse;
+      -ms-flex-direction: row-reverse;
+          flex-direction: row-reverse;
+}
+.ecsclusive .ecsclusive-sets .setTwo img {
+  position: absolute;
+  right: -10px;
+  bottom: 0;
+}
+.ecsclusive .ecsclusive-sets .setTwo .ecsclusive-block__descr {
+  position: absolute;
+  left: 40px;
+  top: 65px;
+}
+.ecsclusive .ecsclusive-sets .ecsclusive-block__descr {
+  text-align: center;
+  font-family: "HelveticaRegular";
+}
+.ecsclusive .ecsclusive-sets .ecsclusive-block__descr .ecsclusive-block__title {
+  font-size: 22px;
+}
+.ecsclusive .ecsclusive-sets .ecsclusive-block__descr .ecsclusive-block__title .pink {
+  color: #ec008c;
+}
+.ecsclusive .ecsclusive-sets .ecsclusive-block__descr .ecsclusive-block__price {
+  margin-top: 8px;
+  margin-bottom: 14px;
+}
+.ecsclusive .ecsclusive-sets .ecsclusive-block__descr .ecsclusive-block__price .ecsclusive-block__oldCost {
+  font-size: 18px;
+  text-decoration: line-through;
+  color: #242424;
+}
+.ecsclusive .ecsclusive-sets .ecsclusive-block__descr .ecsclusive-block__price .ecsclusive-block__newCost {
+  color: #ec008c;
+  font-size: 26px;
+  font-family: "HelveticaBold";
+  margin-top: -6px;
+}
+.ecsclusive .ecsclusive-sets .ecsclusive-block__descr a.ecsclusive-block__toBuy {
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 14px;
+  border: 1px solid #000;
+  background: #ffffff;
+  color: #000000;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  width: 170px;
+  height: 52px;
+  line-height: 50px;
+  display: inline-block;
+  -webkit-transition: all 0.12s linear 0s;
+  transition: all 0.12s linear 0s;
+}
+.ecsclusive .ecsclusive-sets .ecsclusive-block__descr a.ecsclusive-block__toBuy:hover {
+  background: #000;
+  color: #ffffff;
+} */
+.needToTry {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  /* width: 951px; */
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.needToTry .ofr {
+  text-align: center;
+  width: 235px;
+  position: relative;
+  cursor: pointer;
+  height: 350px;
+  overflow: hidden;
+}
+.needToTry .ofr:hover .ofr__moreInfo {
+  top: 0;
+}
+.needToTry .ofr__preview {
+  height: 350px;
+}
+.needToTry .ofr__preview img {
+  display: block;
+  margin-bottom: 14px;
+}
+.needToTry .ofr__preview span.ofr__name {
+  display: block;
+  font-size: 14px;
+  font-weight: bold;
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.needToTry .ofr__preview span.ofr__description {
+  display: block;
+  font-size: 14px;
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+}
+.needToTry .ofr__moreInfo {
+  height: 240px;
+  position: absolute;
+  width: 235px;
+  top: -350px;
+  background: rgba(0, 0, 0, 0.7);
+  -webkit-transition: all 0.6s ease-out 0s;
+  transition: all 0.6s ease-out 0s;
+}
+.needToTry .ofr__moreInfo .ofr__price {
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  padding-top: 60px;
+}
+.needToTry .ofr__moreInfo .ofr__price span.ofr__newPrice {
+  color: #ffffff;
+  font-size: 26px;
+}
+.needToTry .ofr__moreInfo .ofr__price span.ofr__newPrice span.count {
+  font-size: 48px;
+}
+.needToTry .ofr__moreInfo .ofr__price span.ofr__newPrice span.rub {
+  font-size: 40px;
+}
+.needToTry .ofr__moreInfo .ofr__price span.ofr__oldPrice {
+  color: #a7a7a7;
+  font-size: 22px;
+  text-decoration: line-through;
+  margin-left: 12px;
+}
+.needToTry .ofr__moreInfo a.ofr__toCard {
+  display: inline-block;
+  margin-top: 10px;
+  -webkit-transition: all 0.12s linear 0s;
+  transition: all 0.12s linear 0s;
+  width: 186px;
+  height: 52px;
+  line-height: 50px;
+  color: #000000;
+  text-transform: uppercase;
+  background: #fff;
+  text-decoration: none;
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  font-size: 14px;
+  font-weight: bold;
+}
+.needToTry .ofr__moreInfo a.ofr__toCard:hover {
+  background: #000;
+  color: #ffffff;
+}
+/* .brezhneva {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+.brezhneva a.tta {
+  background: url("/mediaMarket-ru/1196/tta.jpg") no-repeat;
+  display: block;
+  width: 291px;
+  height: 370px;
+  text-decoration: none;
+  position: relative;
+}
+.brezhneva a.tta span.tobuy {
+  color: #000000;
+  text-transform: uppercase;
+  display: inline-block;
+  background: #ffffff;
+  position: absolute;
+  bottom: 26px;
+  left: 50%;
+  -webkit-transform: translate(-50%, 0);
+      -ms-transform: translate(-50%, 0);
+          transform: translate(-50%, 0);
+  -webkit-transition: all 0.12s linear 0s;
+  transition: all 0.12s linear 0s;
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  font-weight: bold;
+  font-size: 14px;
+  width: 170px;
+  height: 52px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  text-align: center;
+  line-height: 50px;
+  border: 1px solid #000;
+}
+.brezhneva a.tta span.tobuy:hover {
+  background: #000;
+  color: #ffffff;
+}
+.brezhneva .videoteka {
+  width: 659px;
+  height: 370px;
+  background: url("/mediaMarket-ru/1199/brezhneva.jpg") no-repeat;
+}
+.brezhneva .videoteka iframe {
+  width: 100%;
+  height: 100%;
+} */
+@media screen and (max-width: 951px) {
+  /* .simpleBanner {
+    width: 100%;
+    background-position: 50% 0;
+  }
+  .anewshka .simpleBanner__claim {
+    font-size: 7vw;
+  }
+  .anewshka .simpleBanner__price {
+    font-size: 7vw;
+  }
+  .anewshka .simpleBanner__get {
+    margin-top: -1vw;
+  }
+  .anewshka .simpleBanner__discount {
+    bottom: 120px;
+  }
+  .anewshka .simpleBanner__term {
+    font-size: 5vw;
+  }
+  .anewshka .simpleBanner__toBuy {
+    font-size: 6vw;
+    width: 80%;
+    height: 16vw;
+    line-height: 15vw;
+    bottom: 8px;
+  }
+  .saleshka .simpleBanner__toBuy {
+    font-size: 6vw;
+    width: 80%;
+    height: 16vw;
+    line-height: 15vw;
+    bottom: 8px;
+  }
+  .ecsclusive {
+    width: 100%;
+    margin-bottom: 10vw;
+    height: unset;
+  }
+  .ecsclusive .ecsclusive-pillows {
+    display: none;
+  }
+  .ecsclusive .ecsclusive-sets {
+    margin-bottom: 10vw;
+    overflow: hidden;
+    display: block;
+  }
+  .ecsclusive .ecsclusive-sets .ecsclusive-block {
+    display: block !important;
+    height: 150vw;
+    text-align: center;
+  }
+  .ecsclusive .ecsclusive-sets .ecsclusive-block img {
+    position: relative;
+    right: unset;
+  }
+  .ecsclusive .ecsclusive-sets .ecsclusive-block .ecsclusive-block__descr {
+    position: relative;
+    left: unset;
+  }
+  .ecsclusive .ecsclusive-sets .ecsclusive-block__descr .ecsclusive-block__title {
+    font-size: 7vw;
+  }
+  .ecsclusive .ecsclusive-sets .ecsclusive-block__descr .ecsclusive-block__price .ecsclusive-block__oldCost {
+    font-size: 6vw;
+  }
+  .ecsclusive .ecsclusive-sets .ecsclusive-block__descr .ecsclusive-block__price .ecsclusive-block__newCost {
+    font-size: 8vw;
+  }
+  .ecsclusive .ecsclusive-sets .ecsclusive-block__descr a.ecsclusive-block__toBuy {
+    font-size: 6vw;
+    height: 16vw;
+    line-height: 15vw;
+    width: 80%;
+  } */
+  .needToTry {
+    display: block;
+    width: 100% !important;
+  }
+  .needToTry .ofr {
+    width: 100% !important;
+    height: 150vw;
+  }
+  .needToTry .ofr__preview {
+    width: 100% !important;
+    height: 150vw;
+  }
+  .needToTry .ofr__preview img {
+    width: 100% !important;
+  }
+  .needToTry .ofr__preview span.ofr__name {
+    font-size: 8vw;
+  }
+  .needToTry .ofr__preview span.ofr__description {
+    font-size: 7vw;
+  }
+  .needToTry .ofr__moreInfo {
+    width: 100% !important;
+    height: 150vw;
+    top: -150vw;
+    padding-top: 20vw;
+  }
+  .needToTry .ofr__moreInfo .ofr__price span.ofr__newPrice {
+    font-size: 10vw;
+  }
+  .needToTry .ofr__moreInfo .ofr__price span.ofr__newPrice span.count {
+    font-size: 16vw;
+  }
+  .needToTry .ofr__moreInfo .ofr__price span.ofr__newPrice span.rub {
+    font-size: 10vw;
+  }
+  .needToTry .ofr__moreInfo .ofr__price span.ofr__oldPrice {
+    font-size: 10vw;
+  }
+  .needToTry .ofr__moreInfo a.ofr__toCard {
+    width: 80%;
+    height: 20vw;
+    font-size: 7vw;
+    line-height: 20vw;
+  }
+  /* .brezhneva {
+    display: block;
+    width: 100% !important;
+    margin-bottom: 10vw;
+  }
+  .brezhneva a.tta {
+    display: block;
+    width: 100% !important;
+    height: 119vw;
+    background-size: contain;
+  }
+  .brezhneva .videoteka {
+    display: block;
+    width: 100% !important;
+  }
+  .brezhneva .videoteka iframe {
+    width: 100%;
+    height: 100%;
+  } */
+}
