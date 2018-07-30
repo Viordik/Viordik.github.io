@@ -1058,10 +1058,6 @@ body {
     margin-left: -20px;
     margin-right: -25px; }
 
-  .social__list {
-    margin-left: -28px;
-    margin-right: -26px; }
-
   .content-about__conteiner {
     display: -ms-flexbox;
     display: flex;
@@ -1211,6 +1207,10 @@ body {
 
   .services__item {
     padding: 0 200px; }
+
+  .social__list {
+    margin-left: -28px;
+    margin-right: -26px; }
 
   .content-about__wrapper {
     -ms-flex-preferred-size: 100%;
