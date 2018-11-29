@@ -26,17 +26,17 @@ const news = document.querySelectorAll('.text-hide')
 
 console.log(lotHouse);
 
-Array.prototype.forEach.call(yearButtons, function(yearButton, index) {
-  yearButton.addEventListener('click', function() {
+Array.prototype.forEach.call(yearButtons, function (yearButton, index) {
+  yearButton.addEventListener('click', function () {
 
-      if (blockHide.length > 0)
-        blockHide[index].classList.toggle('history-company__text-hide--active');
+    if (blockHide.length > 0)
+      blockHide[index].classList.toggle('history-company__text-hide--active');
 
-      if (lotHouse.length > 0)
-        lotHouse[index].classList.toggle('lot-house__description-hide--active');
+    if (lotHouse.length > 0)
+      lotHouse[index].classList.toggle('lot-house__description-hide--active');
 
-      if (news.length > 0)
-        news[index].classList.toggle('text-hide--active');
+    if (news.length > 0)
+      news[index].classList.toggle('text-hide--active');
 
   })
 });
@@ -48,59 +48,72 @@ if (document.querySelector('#map')) {
   ymaps.ready(init);
   var myMap;
 
-  function init(){
-      myMap = new ymaps.Map("map", {
-          center: [55.709622, 37.624885],
-          zoom: 16
-      });
-      myMap.behaviors.disable('scrollZoom');
-      myMap.behaviors.disable('drag');
-      myPlacemark = new ymaps.Placemark([55.709622, 37.624885], { hintContent: 'ГБЭС', balloonContent: 'Холодильный переулок д.3, корп.1, оф. 4402' });
+  function init() {
+    myMap = new ymaps.Map("map", {
+      center: [55.709622, 37.624885],
+      zoom: 16,
+      controls: ['zoomControl', 'typeSelector']
+    });
+    myMap.behaviors.disable('scrollZoom');
+    myMap.behaviors.disable('drag');
+    myPlacemark = new ymaps.Placemark([55.709622, 37.624885], {
+      hintContent: 'ГБЭС',
+      balloonContent: 'Холодильный переулок д.3, корп.1, оф. 4402'
+    });
+    myMap.events.add('dblclick', function (e) {
+      e.preventDefault(); // При двойном щелчке зума не будет.
+    });
 
-      myMap.geoObjects.add(myPlacemark);
+    myMap.events.add('click', function (e) {
+      console.log('О, карты запущены!');
+      myMap.behaviors.enable('scrollZoom');
+      myMap.behaviors.enable('drag');
+      e.stopPropagation();
+    });
+
+    myMap.geoObjects.add(myPlacemark);
   }
 }
-
-;(function() {
+  ;
+  (function () {
     //===============================================
     // Карусуль на главной странице
 
-      $(document).ready(function(){
-        $('.services').slick({
-          autoplay: true,
-          autoplaySpeed: 2500,
-          dots: true,
-          infinite: true,
-          speed: 4000,
-          slidesToShow: 1,
-        });
+    $(document).ready(function () {
+      $('.services').slick({
+        autoplay: true,
+        autoplaySpeed: 2500,
+        dots: true,
+        infinite: true,
+        speed: 4000,
+        slidesToShow: 1,
       });
+    });
 
-      $(document).ready(function(){
-        $('.our-clients__wrapper').slick({
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          autoplay: true,
-          autoplaySpeed: 2000,
-          infinite: true,
-          dots: true,
-          variableWidth: true,
-        });
+    $(document).ready(function () {
+      $('.our-clients__wrapper').slick({
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 2000,
+        infinite: true,
+        dots: true,
+        variableWidth: true,
       });
+    });
 
-      // Карусель на странице Лот
-      $(document).ready(function(){
-        $('.lot-img').slick({
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          autoplay: true,
-          autoplaySpeed: 2000,
-          infinite: true,
-          dots: true,
-          variableWidth: true,
-        });
+    // Карусель на странице Лот
+    $(document).ready(function () {
+      $('.lot-img').slick({
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 2000,
+        infinite: true,
+        dots: true,
+        variableWidth: true,
       });
-      //================================================
+    });
+    //================================================
 
-})();
-
+  })();
