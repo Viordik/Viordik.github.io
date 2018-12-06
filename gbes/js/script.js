@@ -7,39 +7,53 @@ btnMenu.addEventListener('click', function () {
 //==============================================
 //Активный пункт меню
 
+
+
 //===============================================
-//Выпадающее под меню
+//Доп меню
 const secondMenu = document.querySelector('.menu-list__dropdown');
 const open = document.querySelector('.open');
+const back = secondMenu.querySelector('.back');
 
-open.addEventListener('click', function () {
-  open.classList.toggle('open--active');
-  secondMenu.classList.toggle('menu-list__dropdown--active');
-});
+if (open) {
+  open.addEventListener('click', function () {
+    open.classList.toggle('open--active');
+    secondMenu.classList.toggle('menu-list__dropdown--active');
+  });
+}
+
+if (back) {
+  back.addEventListener('click', function () {
+    secondMenu.classList.remove('menu-list__dropdown--active');
+  });
+};
+
+
+
 
 //===============================================
 //Раскрывающиеся блоки с историей компании на странице "О компании"
-const yearButtons = document.querySelectorAll('.history-company__btn-year');
-const blockHide = document.querySelectorAll('.history-company__text-hide');
-const lotHouse = document.querySelectorAll('.lot-house__description-hide');
-const news = document.querySelectorAll('.text-hide')
+// const yearButtons = document.querySelectorAll('.history-company__btn-year');
+// const blockHide = document.querySelectorAll('.history-company__text-hide');
+// const lotHouse = document.querySelectorAll('.lot-house__description-hide');
+// const news = document.querySelectorAll('.text-hide')
 
-console.log(lotHouse);
+// console.log(lotHouse);
 
-Array.prototype.forEach.call(yearButtons, function (yearButton, index) {
-  yearButton.addEventListener('click', function () {
+// Array.prototype.forEach.call(yearButtons, function (yearButton, index) {
+//   yearButton.addEventListener('click', function () {
 
-    if (blockHide.length > 0)
-      blockHide[index].classList.toggle('history-company__text-hide--active');
+//     if (blockHide.length > 0)
+//       blockHide[index].classList.toggle('history-company__text-hide--active');
 
-    if (lotHouse.length > 0)
-      lotHouse[index].classList.toggle('lot-house__description-hide--active');
+//     if (lotHouse.length > 0)
+//       lotHouse[index].classList.toggle('lot-house__description-hide--active');
 
-    if (news.length > 0)
-      news[index].classList.toggle('text-hide--active');
+//     if (news.length > 0)
+//       news[index].classList.toggle('text-hide--active');
 
-  })
-});
+//   })
+// });
 
 //===============================================
 // Yandex Map
@@ -73,47 +87,45 @@ if (document.querySelector('#map')) {
 
     myMap.geoObjects.add(myPlacemark);
   }
-}
-  ;
-  (function () {
-    //===============================================
-    // Карусуль на главной странице
+};
+(function () {
+  //===============================================
+  // Карусуль на главной странице
 
-    $(document).ready(function () {
-      $('.services').slick({
-        autoplay: true,
-        autoplaySpeed: 2500,
-        dots: true,
-        infinite: true,
-        speed: 4000,
-        slidesToShow: 1,
-      });
+  $(document).ready(function () {
+    $('.services').slick({
+      autoplay: true,
+      autoplaySpeed: 2500,
+      dots: true,
+      infinite: true,
+      speed: 4000,
+      slidesToShow: 1,
     });
+  });
 
-    $(document).ready(function () {
-      $('.our-clients__wrapper').slick({
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        autoplay: true,
-        autoplaySpeed: 2000,
-        infinite: true,
-        dots: true,
-        variableWidth: true,
-      });
+  $(document).ready(function () {
+    $('.our-clients__wrapper').slick({
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      autoplay: true,
+      autoplaySpeed: 2000,
+      infinite: true,
+      dots: true,
+      variableWidth: true,
     });
+  });
 
-    // Карусель на странице Лот
-    $(document).ready(function () {
-      $('.lot-img').slick({
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        autoplay: true,
-        autoplaySpeed: 2000,
-        infinite: true,
-        dots: true,
-        variableWidth: true,
-      });
+  // Карусель на странице Лот
+  $(document).ready(function () {
+    $('.lot-img').slick({
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      autoplay: true,
+      autoplaySpeed: 2000,
+      infinite: true,
+      dots: true,
+      variableWidth: true,
     });
-    //================================================
-
-  })();
+  });
+  //================================================
+})();
