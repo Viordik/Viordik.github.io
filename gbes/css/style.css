@@ -389,8 +389,7 @@ body {
     background-color: transparent;
     border: none;
     border-bottom: 3px solid rgba(238, 0, 0, 0.3);
-    outline: none;
-    -webkit-appearance: none; }
+    outline: none; }
     .form__field-data:-ms-input-placeholder {
       font-weight: 700;
       font-size: 22px;
@@ -411,8 +410,7 @@ body {
     background-color: transparent;
     border: none;
     border-bottom: 3px solid rgba(238, 0, 0, 0.3);
-    outline: none;
-    -webkit-appearance: none; }
+    outline: none; }
     .form__field-number-phone:-ms-input-placeholder {
       font-weight: 700;
       font-size: 22px;
@@ -435,8 +433,7 @@ body {
     border: none;
     border-bottom: 3px solid rgba(238, 0, 0, 0.3);
     outline: none;
-    resize: none;
-    -webkit-appearance: none; }
+    resize: none; }
     .form__message:-ms-input-placeholder {
       font-weight: 700;
       font-size: 22px;
@@ -681,15 +678,8 @@ body {
     .history-company__btn-year:active {
       color: #ffffff;
       background-color: #ee0000; }
-  .history-company__text-hide {
-    height: 0;
-    transform: scaleZ(0);
-    opacity: 0;
-    transition: 0.3s ease; }
-    .history-company__text-hide--active {
-      height: auto;
-      transform: scaleZ(1);
-      opacity: 1; }
+  .history-company__link {
+    color: #cd2626; }
   .history-company__text {
     font-size: 16px;
     line-height: 26px;
@@ -1256,6 +1246,10 @@ body {
     color: #333;
     text-transform: uppercase;
     letter-spacing: 3px; }
+  .subscribe__wrapper-select {
+    margin-bottom: 10px; }
+  .subscribe__select {
+    max-width: 100%; }
   .subscribe__wrapper {
     display: -ms-flexbox;
     display: flex;
@@ -1318,6 +1312,11 @@ body {
     .subscribe__checkbox:checked ~ label:after {
       background-color: #ff0000;
       border-color: #ff0000; }
+  .subscribe__checkbox:disabled ~ label {
+    background-color: #ccc9c9; }
+    .subscribe__checkbox:disabled ~ label:after {
+      background-color: #ccc9c9;
+      background-image: none; }
   .subscribe__checkbox {
     position: absolute;
     top: 50%;
