@@ -8,7 +8,7 @@
     btnMenu.addEventListener('click', function () {
       menu.classList.toggle('menu-nav--active');
     });
-  }
+  };
 })();
 
 
