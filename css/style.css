@@ -1,0 +1,190 @@
+@import url("https://fonts.googleapis.com/css?family=Sintony");
+@font-face {
+  font-family: 'Glober';
+  src: url("../fonts/globerlight.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'Glober';
+  src: url("../fonts/globerregular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'Glober';
+  src: url("../fonts/globersemibold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal; }
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  font-family: "Glober", sans-serif; }
+
+html {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden; }
+
+body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  background-color: #f4f4f4; }
+
+.page-body {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+      flex-direction: column;
+  padding: 0 20px;
+  width: 100%; }
+
+.header-block {
+  max-width: 1200px;
+  height: 400px;
+  margin: 0 -20px; }
+  .header-block__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; }
+
+.avatar {
+  position: relative;
+  max-width: 250px;
+  margin: 0 auto; }
+  .avatar__img {
+    position: absolute;
+    width: 100%;
+    border: 5px solid #b70c0c;
+    border-radius: 50%;
+    -ms-transform: translateY(-140px);
+        transform: translateY(-140px);
+    object-fit: cover; }
+
+.info-block {
+  margin: 115px 0 50px 0; }
+  .info-block__h2 {
+    text-align: center;
+    text-transform: uppercase;
+    padding: 20px 0; }
+  .info-block__text {
+    font-size: 18px; }
+    .info-block__text:first-child {
+      padding-top: 20px; }
+    .info-block__text:not(:last-child) {
+      padding-bottom: 12px; }
+
+.portfolio-block {
+  margin: 50px 0; }
+  .portfolio-block__h2 {
+    margin-bottom: 20px;
+    text-align: center;
+    text-transform: uppercase; }
+  .portfolio-block__wrapper {
+    max-width: 280px;
+    margin: 0 auto; }
+  .portfolio-block__item:not(:last-child) {
+    margin-bottom: 15px; }
+  .portfolio-block__link {
+    display: block;
+    width: 280px;
+    height: 128px;
+    padding: 40px 0;
+    font-weight: 700;
+    font-size: 26px;
+    font-family: "Sintony";
+    text-align: center;
+    color: #333333;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 3px solid #b70c0c;
+    transition: 0.8s; }
+    .portfolio-block__link:hover {
+      box-shadow: 0 0 20px #e00f0f;
+      -ms-transform: scale(1.1);
+          transform: scale(1.1); }
+  .portfolio-block__text {
+    margin-top: 20px; }
+
+.diplom-block__h2 {
+  margin-bottom: 20px;
+  text-align: center;
+  text-transform: uppercase; }
+
+.diplom-block__text:not(:last-child) {
+  padding-bottom: 10px; }
+
+.foto-block {
+  margin: 50px 0; }
+  .foto-block__h2 {
+    margin-bottom: 20px;
+    text-align: center;
+    text-transform: uppercase; }
+  .foto-block__wrapper-portfolio {
+    margin: 30px 0; }
+  .foto-block__item-foto {
+    max-width: 280px; }
+  .foto-block__img {
+    width: 100%; }
+  .foto-block__wrapper {
+    display: -ms-grid;
+    display: grid;
+    -ms-flex-align: center;
+        align-items: center;
+    -ms-grid-columns: (50%)[2];
+        grid-template-columns: repeat(2, 50%); }
+  .foto-block__500px-logo {
+    max-width: 140px;
+    margin: 0 auto; }
+  .foto-block__500px-icon {
+    display: block;
+    width: 100px; }
+  .foto-block__instagram-logo {
+    max-width: 50px;
+    margin: 0 auto; }
+  .foto-block__instagram-icon {
+    display: block;
+    width: 100%; }
+
+.footer-block {
+  margin: 30px 0; }
+
+.contacts {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: justify;
+      justify-content: space-between;
+  max-width: 300px;
+  margin: 0 auto; }
+  .contacts__link {
+    text-decoration: none; }
+  .contacts__img {
+    width: 50px;
+    border-radius: 14px; }
+  @media screen and (min-width: 768px){
+  .portfolio-block__wrapper{
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+    max-width: 600px; }
+  .portfolio-block__item:nth-child(2n+1){
+    margin-right: 40px; } }
+  @media (min-width: 1024px){
+  .page-body{
+    padding: 0 28px; } }
+  @media screen and (min-width: 1024px){
+  .header-block{
+    margin: 0 -28px; } }
+  @media screen and (min-width: 1200px){
+  .header-block{
+    margin: 0; } }
+  @media (min-width: 1260px){
+  .page-body{
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0; } }
