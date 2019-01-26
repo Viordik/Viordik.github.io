@@ -6,6 +6,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="css/style.min.css">
+
+  <!-- CARUSEL css ==================-->
+  <link rel="stylesheet" type="text/css" href="slick/slick.css" />
+  <link rel="stylesheet" type="text/css" href="slick/slick-theme.css" />
+  <!-- ============================= -->
+
   <title>My site</title>
 </head>
 
@@ -23,21 +29,34 @@
 
       <section class="info-block">
         <h2 class="info-block__h2">Немного обо мне.</h2>
-        <p class="info-block__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero corporis placeat
-          praesentium explicabo
-          recusandae, dignissimos dolorem cumque similique dolor, repellendus ipsam assumenda ut aliquam ipsum optio
-          eius qui maxime? Fuga.</p>
-        <p class="info-block__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero iusto quibusdam
-          magnam, laborum deleniti
-          ipsum? Assumenda inventore, soluta asperiores necessitatibus neque, odio, iste eius mollitia delectus
-          recusandae libero ut. Possimus.</p>
-        <p class="info-block__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur quo
-          repellendus cupiditate minus
-          libero, a laboriosam, amet iste accusantium vero, non est maiores ea beatae possimus fugit odio eveniet et.</p>
-        <p class="info-block__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid quas velit
-          voluptates, error modi atque
-          repudiandae suscipit ipsa maxime, vitae voluptatum. Libero esse voluptate ducimus sequi, fuga qui neque
-          quasi!</p>
+        <p class="info-block__text">Всем привет, кто посетил мой сайт визитку.</p>
+        <p class="info-block__text">Меня зовут Николай, закончил "Санкт-Петербургский государственный университет
+          аэрокосмического приборостроения".</p>
+        <p class="info-block__text">Cпециальность: Вычислительные машины, комплексы, системы и сети.</p>
+        <p class="info-block__text">Проживаю в Москве.</p>
+        <p class="info-block__text">Front-end разработкой занимаюсь с 2018 года.</p>
+        <p class="info-block__text">Инструменты и языки для разработки:</p>
+        <ul class="info-block__list">
+          <li class="info-block__list-item">HTML5</li>
+          <li class="info-block__list-item">CSS3</li>
+          <li class="info-block__list-item">SASS</li>
+          <li class="info-block__list-item">Gulp</li>
+          <li class="info-block__list-item">JavaScript</li>
+          <li class="info-block__list-item">БЭМ</li>
+          <li class="info-block__list-item">Адаптивная врестка с помощью Flex-box</li>
+          <li class="info-block__list-item">Git</li>
+          <li class="info-block__list-item">Microsoft Visual Code</li>
+        </ul>
+        <p class="info-block__text">Также интересуюсь:</p>
+        <ul class="info-block__list">
+          <li class="info-block__list-item">Фотографией</li>
+          <li class="info-block__list-item">Просмотром кинофильмов</li>
+          <li class="info-block__list-item">Новости IT-сфера</li>
+          <li class="info-block__list-item">Компьютерными комплектующими</li>
+          <li class="info-block__list-item">Стриминг</li>
+        </ul>
+        <p class="info-block__text">Ниже можно ознакомится с примерами работ разработки, программой дипломной работы и
+          некоторыми фотографиями.</p>
       </section>
 
       <section class="portfolio-block">
@@ -66,46 +85,181 @@
           <div class="portfolio-block__item">
             <a class="portfolio-block__link" href="https://viordik.github.io/siluet/index.html" target="_blank">Siluet<sup>*</sup></a>
           </div>
+          <div class="portfolio-block__item">
+            <a class="portfolio-block__link" href="https://viordik.github.io/gismeteo/index.html" target="_blank">Gismeteo<sup>**</sup></a>
+          </div>
         </div>
 
         <p class="portfolio-block__text">* - Сайты имеющие адаптив</p>
+        <p class="portfolio-block__text">** - Сделан только под мобильные устройства</p>
       </section>
 
       <section class="diplom-block">
-        <h2 class="diplom-block__h2">DIPLOM</h2>
+        <h2 class="diplom-block__h2">Дипломная работа</h2>
         <p class="diplom-block__text">Тема диплома: "Компьютерное моделирование посадки воздушных судов при нештатной
           ситуации".</p>
-        <p class="diplom-block__text">Расчеты производятся на примере вуоздушного судна ТУ-204-300.</p>
+        <p class="diplom-block__text">Расчеты производятся на примере воздушного судна ТУ-204-300.</p>
         <p class="diplom-block__text">ПО (программное обеспечение), производит расчет тормозного пути воздушного судна
           ТУ-204-300, с различными нештатными ситуациями.</p>
+        <p class="developer">Раздел находится в разработке</p>
+
+        <h3>Моделирование посадки воздушного судна ТУ-204-300</h3>
+        <div class="diplom">
+          <div id="speed-aircraft" class="speed-aircraft">
+            <div class="speed-aircraft__approach-wr">
+              <label for="approach-speed">Скорость захода на посадку</label>
+              <input id="approach-speed" class="approach-speed" v-model.number.lazy.trim="approachSpeed" placeholder="Введите число"
+                type="text">
+            </div>
+
+            <div class="speed-aircraft__landing-wr">
+              <!-- <p>Посадочная скорость: <span>{{ calculation }}</span></p> -->
+              <label for="landing-speed">Посадочная скорость</label>
+              <input id="landing-speed" class="landing-speed" disabled v-bind:value="landingSpeed" value="0" type="text">
+            </div>
+            <div class="error-block">
+              <p></p>
+            </div>
+          </div>
+
+          <div class="aircraft-parameters">
+            <label class="aircraft-parameters__text" for="">Масса самолета</label>
+            <select class="aircraft-parameters__select" name="" id="weightSelect">
+              <!-- <option disabled value="">Выберите массу самолета</option> -->
+              <option class="aircraft-parameters__option" id="option">80</option>
+              <option class="aircraft-parameters__option" id="option">85</option>
+              <option class="aircraft-parameters__option" id="option">90</option>
+              <option class="aircraft-parameters__option" id="option">100</option>
+            </select>
+          </div>
+
+
+          <div class="aircraft-parameters">
+            <label class="aircraft-parameters__text" for="">Количество отказанных двигателей</label>
+            <select class="aircraft-parameters__select" name="" id="">
+              <option class="aircraft-parameters__option" value="0">Оба двигателя работают</option>
+              <option class="aircraft-parameters__option" value="1">Один двигатель неисправен</option>
+              <option class="aircraft-parameters__option" value="2">Два двигателя неисправны</option>
+            </select>
+          </div>
+
+          <div class="aircraft-parameters">
+            <label class="aircraft-parameters__text" for="">Закрылки</label>
+            <select class="aircraft-parameters__select" name="" id="">
+              <option class="aircraft-parameters__option" value="">Исправны</option>
+              <option class="aircraft-parameters__option" value="">Неисправны</option>
+            </select>
+          </div>
+
+          <div class="aircraft-parameters">
+            <label class="aircraft-parameters__text" for="">Предкрылки</label>
+            <select class="aircraft-parameters__select" name="" id="">
+              <option class="aircraft-parameters__option" value="">Исправны</option>
+              <option class="aircraft-parameters__option" value="">Неисправны</option>
+            </select>
+          </div>
+
+
+          <div class="aircraft-parameters">
+            <label class="aircraft-parameters__text" for="">Угол отклонения закрылков</label>
+            <select class="aircraft-parameters__select" name="" id="">
+              <option class="aircraft-parameters__option" value="0">0</option>
+              <option class="aircraft-parameters__option" value="8">8</option>
+              <option class="aircraft-parameters__option" value="18">18</option>
+              <option class="aircraft-parameters__option" value="26">26</option>
+              <option class="aircraft-parameters__option" value="37">37</option>
+            </select>
+          </div>
+
+
+          <div class="aircraft-parameters">
+            <label class="aircraft-parameters__text" for="">Угол отклонения предкрылков</label>
+            <select class="aircraft-parameters__select" name="" id="">
+              <option class="aircraft-parameters__option" value="0">0</option>
+              <option class="aircraft-parameters__option" value="9">9</option>
+              <option class="aircraft-parameters__option" value="19">19</option>
+              <option class="aircraft-parameters__option" value="23">23</option>
+            </select>
+          </div>
+
+          <div class="aircraft-parameters">
+            <label class="aircraft-parameters__text" for="">Покрытие ВПП</label>
+            <select class="aircraft-parameters__select" name="" id="">
+              <option class="aircraft-parameters__option" value="">Цементно-бетонное</option>
+              <option class="aircraft-parameters__option" value="">Асфальто-бетонное</option>
+            </select>
+          </div>
+
+          <div class="aircraft-parameters">
+            <label class="aircraft-parameters__text" for="">Состояние ВПП</label>
+            <select class="aircraft-parameters__select" name="" id="">
+              <option value="">сухая</option>
+              <option value="">мокрая</option>
+              <option value="">обледенненая</option>
+            </select>
+          </div>
+
+          <div class="diplom__btn-wr">
+            <button class="diplom__btn-calc" type="button">Расчитать</button>
+          </div>
+
+        </div>
       </section>
 
-      <section class="foto-block">
+      <section id="foto" class="foto-block">
         <h2 class="foto-block__h2">Фотографии</h2>
-        <p>Все фотографии были сделаны мною.</p>
-        <p>Пучки для фотографирования:</p>
+        <p class="foto-block__text">Все фотографии были сделаны мною.</p>
+        <p class="foto-block__text">Пучки для фотографирования:</p>
 
-        <ul>
-          <li>
-            Sony Alpha DSLR-A390
-            <ul>
-              <li>DT 18–55 мм F3.5–5.6 SAM</li>
+        <ul class="foto-block__list">
+          <li class="foto-block__list-item">
+            {{ camera }}
+            <ul class="foto-block__list-second">
+              <li class="foto-block__list-item-sony">DT 18–55 мм F3.5–5.6 SAM</li>
             </ul>
           </li>
-          <li>
-            Nikon D7500
-            <ul>
-              <li>Nikon AF-S 18-140mm f/3.5-5.6G ED VR</li>
-              <li>Nikon 50mm f/1.8G AF-S Nikkor</li>
+          <li class="foto-block__list-item">
+            {{ cameraSecond }}
+            <ul class="foto-block__list-second">
+              <li class="foto-block__list-item-nikon">Nikon AF-S 18-140mm f/3.5-5.6G ED VR</li>
+              <li class="foto-block__list-item-nikon">Nikon 50mm f/1.8G AF-S Nikkor</li>
             </ul>
           </li>
         </ul>
         <div class="foto-block__wrapper-portfolio">
-          <div class="foto-block__item-foto">
-            <img class="foto-block__img" src="https://via.placeholder.com/300" alt="foto-1">
+          <div class="foto-block__carusel">
+            <div class="foto-block__wrapper-img">
+              <img class="foto-block__img" src="https://via.placeholder.com/300" alt="foto-1">
+              <p class="foto-block__img-info">Some information</p>
+            </div>
+            <div class="foto-block__wrapper-img">
+              <img class="foto-block__img" src="https://via.placeholder.com/300" alt="foto-2">
+              <p class="foto-block__img-info">Some information</p>
+            </div>
+            <div class="foto-block__wrapper-img">
+              <img class="foto-block__img" src="https://via.placeholder.com/300" alt="foto-3">
+              <p class="foto-block__img-info">Some information</p>
+            </div>
+            <div class="foto-block__wrapper-img">
+              <img class="foto-block__img" src="https://via.placeholder.com/300" alt="foto-4">
+              <p class="foto-block__img-info">Some information</p>
+            </div>
+            <div class="foto-block__wrapper-img">
+              <img class="foto-block__img" src="https://via.placeholder.com/300" alt="foto-5">
+              <p class="foto-block__img-info">Some information</p>
+            </div>
+            <div class="foto-block__wrapper-img">
+              <img class="foto-block__img" src="https://via.placeholder.com/300" alt="foto-6">
+              <p class="foto-block__img-info">Some information</p>
+            </div>
           </div>
         </div>
 
+        <div class="foto-block__wrapper-text">
+          <p class="foto-block__text foto-block__text--second">Если жмакнуть на одну из иконок, то можно ознакомиться
+            со всеми работами.</p>
+          <p class="foto-block__text foto-block__text--second">По вопросам фотографии пишите в Instagram.</p>
+        </div>
 
         <div class="foto-block__wrapper">
           <div class="foto-block__500px-logo">
@@ -159,9 +313,21 @@
             <img class="contacts__img" src="./img/icon-mail.svg" alt="icon-mail">
           </a>
         </div>
+        <p style="color: #ffffff; text-align: center; padding-top: 20px;">p.s. Сайт находится в разработке.</p>
       </section>
     </footer>
   </div>
+
+  <!-- Vue.js ======================== -->
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.22/dist/vue.js"></script>
+  <!-- =============================== -->
+
+  <!-- JS Carusel Slick ============== -->
+  <script type="text/javascript" src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script type="text/javascript" src="//code.jquery.com/jquery-migrate-3.0.1.min.js"></script>
+  <script type="text/javascript" src="slick/slick.min.js"></script>
+  <!-- =============================== -->
+
 
   <script src="js/script.js"></script>
 </body>

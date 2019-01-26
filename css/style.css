@@ -66,15 +66,31 @@ body {
 .info-block {
   margin: 115px 0 50px 0; }
   .info-block__h2 {
+    padding: 20px 0;
     text-align: center;
-    text-transform: uppercase;
-    padding: 20px 0; }
+    text-transform: uppercase; }
   .info-block__text {
-    font-size: 18px; }
+    font-size: 19px; }
     .info-block__text:first-child {
       padding-top: 20px; }
     .info-block__text:not(:last-child) {
       padding-bottom: 12px; }
+  .info-block__list {
+    list-style: none; }
+  .info-block__list-item {
+    position: relative;
+    font-size: 19px;
+    padding-bottom: 6px; }
+    .info-block__list-item::after {
+      content: "";
+      position: absolute;
+      top: 8px;
+      left: -22px;
+      width: 19px;
+      height: 4px;
+      background-color: #b70c0c;
+      -ms-transform: rotate(20deg);
+          transform: rotate(20deg); }
 
 .portfolio-block {
   margin: 50px 0; }
@@ -88,7 +104,9 @@ body {
   .portfolio-block__item:not(:last-child) {
     margin-bottom: 15px; }
   .portfolio-block__link {
+    position: relative;
     display: block;
+    background-color: #f4f4f4;
     width: 280px;
     height: 128px;
     padding: 40px 0;
@@ -102,9 +120,14 @@ body {
     border: 3px solid #b70c0c;
     transition: 0.8s; }
     .portfolio-block__link:hover {
-      box-shadow: 0 0 20px #e00f0f;
+      border: 3px solid #ff0000;
+      box-shadow: inset 0 0 20px #e00f0f;
       -ms-transform: scale(1.1);
           transform: scale(1.1); }
+    .portfolio-block__link:link {
+      color: #e00000; }
+    .portfolio-block__link:visited {
+      color: #333333; }
   .portfolio-block__text {
     margin-top: 20px; }
 
@@ -113,8 +136,39 @@ body {
   text-align: center;
   text-transform: uppercase; }
 
-.diplom-block__text:not(:last-child) {
-  padding-bottom: 10px; }
+.diplom-block__text {
+  font-size: 19px; }
+  .diplom-block__text:not(:last-child) {
+    padding-bottom: 10px; }
+
+.diplom__btn-wr {
+  max-width: 360px;
+  margin: 0 auto;
+  padding-top: 10px; }
+
+.diplom__btn-calc {
+  width: 100%;
+  padding: 10px;
+  font-size: 18px;
+  color: #ffffff;
+  text-transform: uppercase;
+  background-color: #b70c0c;
+  border: 1px solid #b70c0c;
+  outline: none;
+  cursor: pointer; }
+  .diplom__btn-calc:hover {
+    background-color: #cc0e0e;
+    animation: shadowPulse 2s linear alternate infinite both; }
+
+.developer {
+  margin-bottom: 10px;
+  padding: 10px;
+  font-weight: 700;
+  font-size: 20px;
+  color: #ffffff;
+  text-transform: uppercase;
+  background-color: #e00000;
+  border: 1px solid #e00000; }
 
 .foto-block {
   margin: 50px 0; }
@@ -122,12 +176,62 @@ body {
     margin-bottom: 20px;
     text-align: center;
     text-transform: uppercase; }
+  .foto-block__text {
+    padding-bottom: 10px;
+    font-size: 19px; }
+    .foto-block__text--second {
+      text-align: center; }
+  .foto-block__list {
+    padding-left: 30px;
+    font-size: 19px;
+    list-style: none; }
+  .foto-block__list-item {
+    position: relative; }
+    .foto-block__list-item::after {
+      content: "";
+      position: absolute;
+      top: 8px;
+      left: -23px;
+      width: 19px;
+      height: 4px;
+      background-color: #b70c0c;
+      -ms-transform: rotate(20deg);
+          transform: rotate(20deg); }
+  .foto-block__list-second {
+    padding-left: 24px;
+    list-style: none; }
+  .foto-block__list-item-sony, .foto-block__list-item-nikon {
+    position: relative;
+    padding-top: 5px;
+    padding-bottom: 5px; }
+    .foto-block__list-item-sony::after, .foto-block__list-item-nikon::after {
+      content: "";
+      position: absolute;
+      top: 14px;
+      left: -23px;
+      width: 19px;
+      height: 4px;
+      background-color: #f25529;
+      -ms-transform: rotate(20deg);
+          transform: rotate(20deg); }
+  .foto-block__list-item-nikon::after {
+    background-color: #ffde00; }
+  .foto-block__carusel {
+    max-width: 500px;
+    margin: 0 auto; }
   .foto-block__wrapper-portfolio {
+    position: relative;
     margin: 30px 0; }
-  .foto-block__item-foto {
-    max-width: 280px; }
+  .foto-block__wrapper-img {
+    text-align: center;
+    margin-bottom: 35px; }
   .foto-block__img {
-    width: 100%; }
+    width: 100%;
+    display: block; }
+  .foto-block__img-info {
+    padding-top: 13px; }
+  .foto-block__wrapper-text {
+    margin-bottom: 30px; }
   .foto-block__wrapper {
     display: -ms-grid;
     display: grid;
@@ -136,17 +240,30 @@ body {
     -ms-grid-columns: (50%)[2];
         grid-template-columns: repeat(2, 50%); }
   .foto-block__500px-logo {
-    max-width: 140px;
+    max-width: 100px;
     margin: 0 auto; }
   .foto-block__500px-icon {
     display: block;
-    width: 100px; }
+    width: 100%;
+    transition: 1s; }
+    .foto-block__500px-icon:hover {
+      -ms-transform: scale(1.2);
+          transform: scale(1.2); }
   .foto-block__instagram-logo {
     max-width: 50px;
     margin: 0 auto; }
   .foto-block__instagram-icon {
     display: block;
-    width: 100%; }
+    width: 100%;
+    transition: 1s; }
+    .foto-block__instagram-icon:hover {
+      -ms-transform: scale(1.2);
+          transform: scale(1.2); }
+
+.page-footer {
+  background-color: #b70c0c;
+  margin: 0 -500px;
+  padding: 0 500px; }
 
 .footer-block {
   margin: 30px 0; }
@@ -159,11 +276,100 @@ body {
   max-width: 300px;
   margin: 0 auto; }
   .contacts__link {
-    text-decoration: none; }
+    position: relative;
+    text-decoration: none;
+    line-height: 0;
+    padding: 5px;
+    border: 3px solid transparent; }
+    .contacts__link:hover::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      background: linear-gradient(#ffffff 35%, #e00000 80%);
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+      animation: rotate 0.15s linear infinite normal; }
   .contacts__img {
     width: 50px;
     border-radius: 14px; }
-  @media screen and (min-width: 768px){
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg); }
+  25% {
+    transform: rotate(90deg); }
+  50% {
+    transform: rotate(180deg); }
+  75% {
+    transform: rotate(270deg); }
+  100% {
+    transform: rotate(360deg); } }
+
+.speed-aircraft__approach-wr, .speed-aircraft__landing-wr {
+  max-width: 360px;
+  margin-bottom: 10px;
+  text-align: center; }
+
+.approach-speed,
+.landing-speed {
+  width: 100%;
+  margin-top: 10px;
+  padding: 10px;
+  font-weight: 700;
+  font-size: 18px;
+  font-family: "Glober";
+  border: 1px solid #333333;
+  outline: none; }
+  .approach-speed:focus,
+  .landing-speed:focus {
+    border: 1px solid #b70c0c;
+    animation: shadowPulse 2s linear alternate infinite both; }
+
+@keyframes shadowPulse {
+  0% {
+    box-shadow: 0 0 0 #e00000; }
+  50% {
+    box-shadow: 0 0 10px #e00000; }
+  75% {
+    box-shadow: 0 0 5px #e00000; }
+  100% {
+    box-shadow: 0 0 0px #b70c0c; } }
+
+.error {
+  margin: 5px 0;
+  font-size: 17px;
+  font-weight: 700;
+  color: #333333;
+  padding: 5px;
+  max-width: 360px;
+  width: 100%;
+  text-align: center; }
+  .error--warning {
+    background-color: #e00000;
+    color: #ffffff; }
+  .error--good {
+    background-color: #009b1e;
+    color: #ffffff; }
+
+.aircraft-parameters {
+  text-align: center;
+  margin-bottom: 10px;
+  max-width: 360px; }
+  .aircraft-parameters__text {
+    display: block;
+    padding-bottom: 10px; }
+  .aircraft-parameters__select {
+    width: 100%;
+    padding: 10px;
+    outline: none;
+    border: 1px solid #333333;
+    font-size: 18px; }
+    .aircraft-parameters__select:focus {
+      border: 1px solid #b70c0c;
+      animation: shadowPulse 2s linear alternate infinite both; }
+    @media screen and (min-width: 768px){
   .portfolio-block__wrapper{
     display: -ms-flexbox;
     display: flex;
@@ -174,16 +380,16 @@ body {
     max-width: 600px; }
   .portfolio-block__item:nth-child(2n+1){
     margin-right: 40px; } }
-  @media (min-width: 1024px){
+    @media (min-width: 1024px){
   .page-body{
     padding: 0 28px; } }
-  @media screen and (min-width: 1024px){
+    @media screen and (min-width: 1024px){
   .header-block{
     margin: 0 -28px; } }
-  @media screen and (min-width: 1200px){
+    @media screen and (min-width: 1200px){
   .header-block{
     margin: 0; } }
-  @media (min-width: 1260px){
+    @media (min-width: 1260px){
   .page-body{
     max-width: 1200px;
     margin: 0 auto;
