@@ -13,8 +13,6 @@ const difference = 20;
     } else {
       error.innerHTML = ('<p class="error error--good">Корректные данные</p>');
       landingSpeed.value = approachSpeed.value - difference;
-      // console.log(typeof approachSpeed.value);
-      // console.log(typeof landingSpeed.value);
     };
   });
 })();
@@ -35,13 +33,63 @@ const difference = 20;
 
 
 
-const weight = document.getElementById('weightSelect');
+const weight = document.getElementById('weight-select');
 
-// function
 
-weight.addEventListener('click', function () {
+weight.addEventListener('change', function() {
   const x = weight.options[weight.selectedIndex].value;
   console.log(x);
+  return x;
+});
+
+const revers = document.getElementById('engines-select');
+
+revers.addEventListener('change', function() {
+  const l = revers.options[revers.selectedIndex].value;
+  console.log(l);
+  return l;
+});
+
+const flaps = document.getElementById('flaps');
+const angleFlaps = document.getElementById('angle-flaps');
+
+console.log(flaps);
+console.log(angleFlaps);
+
+
+flaps.addEventListener('change', function () {
+  if (flaps.value == '1') {
+    angleFlaps.removeAttribute('disabled', 'disabled');
+    angleFlaps.classList.remove('disabled');
+    console.log('Жмакс')
+  }
+
+  if (flaps.value == '0') {
+    angleFlaps.setAttribute('disabled', 'disabled');
+    angleFlaps.classList.add('disabled');
+    console.log('Все плохо!');
+  }
+});
+
+const slats = document.getElementById('slats');
+const angleSlats = document.getElementById('angle-slats');
+
+console.log(flaps);
+console.log(angleFlaps);
+
+
+slats.addEventListener('change', function () {
+  if (slats.value == '1') {
+    angleSlats.removeAttribute('disabled', 'disabled');
+    angleSlats.classList.remove('disabled');
+    console.log('Жмакс')
+  }
+
+  if (slats.value == '0') {
+    angleSlats.setAttribute('disabled', 'disabled');
+    angleSlats.classList.add('disabled');
+    console.log('Все плохо!');
+  }
 });
 
 
