@@ -110,28 +110,27 @@
         <p class="developer">Раздел находится в разработке</p>
 
         <h3>Моделирование посадки воздушного судна ТУ-204-300</h3>
-        <div class="diplom">
+        <div class="diplom" id="airplane">
           <div id="speed-aircraft" class="speed-aircraft">
             <div class="speed-aircraft__approach-wr">
               <label for="approach-speed">Скорость захода на посадку</label>
-              <input id="approach-speed" class="approach-speed" v-model.number.lazy.trim="approachSpeed" placeholder="Введите число"
-                type="text">
+              <input id="approach-speed" class="approach-speed" placeholder="Введите число" type="number" v-model.number="speedStart">
             </div>
 
             <div class="speed-aircraft__landing-wr">
               <!-- <p>Посадочная скорость: <span>{{ calculation }}</span></p> -->
               <label for="landing-speed">Посадочная скорость</label>
-              <input id="landing-speed" class="landing-speed" disabled v-bind:value="landingSpeed" value="0" type="text">
+              <input id="landing-speed" class="landing-speed" disabled value="0" type="text" v-model="speed">
             </div>
             <div class="error-block">
-              <p></p>
+              <p class="error" v-bind:class="'error--' + errorClass">{{ textError }}</p>
             </div>
           </div>
 
           <div class="aircraft-parameters">
             <label class="aircraft-parameters__text" for="">Масса самолета</label>
-            <select class="aircraft-parameters__select" name="" id="weight-select">
-              <!-- <option disabled value="">Выберите массу самолета</option> -->
+            <select class="aircraft-parameters__select" name="" id="weight-select" v-model="weight">
+              <option class="aircraft-parameters__option" disabled value="">Выберите массу самолета</option>
               <option class="aircraft-parameters__option" id="option">80</option>
               <option class="aircraft-parameters__option" id="option">85</option>
               <option class="aircraft-parameters__option" id="option">90</option>
@@ -142,7 +141,8 @@
 
           <div class="aircraft-parameters">
             <label class="aircraft-parameters__text" for="">Количество отказанных двигателей</label>
-            <select class="aircraft-parameters__select" name="" id="engines-select">
+            <select class="aircraft-parameters__select" name="" id="engines-select" v-model="revers">
+              <option class="aircraft-parameters__option" disabled value="">Выберите количество двигателей</option>
               <option class="aircraft-parameters__option" value="12000">Оба двигателя работают</option>
               <option class="aircraft-parameters__option" value="6000">Один двигатель неисправен</option>
               <option class="aircraft-parameters__option" value="0">Два двигателя неисправны</option>
@@ -151,7 +151,8 @@
 
           <div class="aircraft-parameters">
             <label class="aircraft-parameters__text" for="">Закрылки</label>
-            <select class="aircraft-parameters__select" name="" id="flaps">
+            <select class="aircraft-parameters__select" name="" id="flaps" v-model="flaps">
+              <option class="aircraft-parameters__option" disabled value="">Выберите работоспособность</option>
               <option class="aircraft-parameters__option" value="1">Исправны</option>
               <option class="aircraft-parameters__option" value="0">Неисправны</option>
             </select>
@@ -159,7 +160,8 @@
 
           <div class="aircraft-parameters">
             <label class="aircraft-parameters__text" for="">Предкрылки</label>
-            <select class="aircraft-parameters__select" name="" id="slats">
+            <select class="aircraft-parameters__select" name="" id="slats" v-model="slats">
+              <option class="aircraft-parameters__option" disabled value="">Выберите работоспособность</option>
               <option class="aircraft-parameters__option" value="1">Исправны</option>
               <option class="aircraft-parameters__option" value="0">Неисправны</option>
             </select>
@@ -168,7 +170,8 @@
 
           <div class="aircraft-parameters">
             <label class="aircraft-parameters__text" for="">Угол отклонения закрылков</label>
-            <select class="aircraft-parameters__select" name="" id="angle-flaps">
+            <select class="aircraft-parameters__select" name="" id="angle-flaps" v-model="angleFlaps" v-bind:class="angleFlaps" v-bind:disabled="stateFlaps">
+              <option class="aircraft-parameters__option" disabled value="">Выберите угол отклонения</option>
               <option class="aircraft-parameters__option angle-flaps" value="0">0</option>
               <option class="aircraft-parameters__option angle-flaps" value="8">8</option>
               <option class="aircraft-parameters__option angle-flaps" value="18">18</option>
@@ -180,7 +183,8 @@
 
           <div class="aircraft-parameters">
             <label class="aircraft-parameters__text" for="">Угол отклонения предкрылков</label>
-            <select class="aircraft-parameters__select" name="" id="angle-slats">
+            <select class="aircraft-parameters__select" name="" id="angle-slats" v-model="angleSlats" v-bind:class="angleSlats" v-bind:disabled="stateSlats">
+              <option class="aircraft-parameters__option" disabled value="">Выберите угол отклонения</option>
               <option class="aircraft-parameters__option" value="0">0</option>
               <option class="aircraft-parameters__option" value="9">9</option>
               <option class="aircraft-parameters__option" value="19">19</option>
@@ -190,18 +194,20 @@
 
           <div class="aircraft-parameters">
             <label class="aircraft-parameters__text" for="">Покрытие ВПП</label>
-            <select class="aircraft-parameters__select" name="" id="">
-              <option class="aircraft-parameters__option" value="">Цементно-бетонное</option>
-              <option class="aircraft-parameters__option" value="">Асфальто-бетонное</option>
+            <select class="aircraft-parameters__select" name="" id="coating" v-model="runwayCoating">
+              <option class="aircraft-parameters__option" disabled value="">Выберите покрытие</option>
+              <option class="aircraft-parameters__option" value="cement">Цементно-бетонное</option>
+              <option class="aircraft-parameters__option" value="asphalt">Асфальто-бетонное</option>
             </select>
           </div>
 
           <div class="aircraft-parameters">
             <label class="aircraft-parameters__text" for="">Состояние ВПП</label>
-            <select class="aircraft-parameters__select" name="" id="">
-              <option value="">сухая</option>
-              <option value="">мокрая</option>
-              <option value="">обледенненая</option>
+            <select class="aircraft-parameters__select" name="" id="" v-model="runwayState">
+              <option class="aircraft-parameters__option" disabled value="">Выберите состояние</option>
+              <option value="1">сухая</option>
+              <option value="2">мокрая</option>
+              <option value="3">обледенненая</option>
             </select>
           </div>
 
@@ -325,7 +331,7 @@
   </div>
 
   <!-- Vue.js ======================== -->
-  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.22/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   <!-- =============================== -->
 
   <!-- JS Carusel Slick ============== -->
