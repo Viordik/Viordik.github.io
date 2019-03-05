@@ -170,7 +170,7 @@
 
           <div class="aircraft-parameters">
             <label class="aircraft-parameters__text" for="">Угол отклонения закрылков</label>
-            <select class="aircraft-parameters__select" name="" id="angle-flaps" v-model="angleFlaps" v-bind:class="angleFlaps" v-bind:disabled="stateFlaps">
+            <select class="aircraft-parameters__select" name="" id="angle-flaps" v-model="angleFlaps" v-bind:class="angleFlapsClass" v-bind:disabled="stateFlaps">
               <option class="aircraft-parameters__option" disabled value="">Выберите угол отклонения</option>
               <option class="aircraft-parameters__option angle-flaps" value="0">0</option>
               <option class="aircraft-parameters__option angle-flaps" value="8">8</option>
@@ -183,7 +183,7 @@
 
           <div class="aircraft-parameters">
             <label class="aircraft-parameters__text" for="">Угол отклонения предкрылков</label>
-            <select class="aircraft-parameters__select" name="" id="angle-slats" v-model="angleSlats" v-bind:class="angleSlats" v-bind:disabled="stateSlats">
+            <select class="aircraft-parameters__select" name="" id="angle-slats" v-model="angleSlats" v-bind:class="angleSlatsClass" v-bind:disabled="stateSlats">
               <option class="aircraft-parameters__option" disabled value="">Выберите угол отклонения</option>
               <option class="aircraft-parameters__option" value="0">0</option>
               <option class="aircraft-parameters__option" value="9">9</option>
@@ -203,17 +203,25 @@
 
           <div class="aircraft-parameters">
             <label class="aircraft-parameters__text" for="">Состояние ВПП</label>
-            <select class="aircraft-parameters__select" name="" id="" v-model="runwayState">
+            <select class="aircraft-parameters__select" name="" id="" v-model="runwayState" v-if="runwayCoating == 'cement'">
               <option class="aircraft-parameters__option" disabled value="">Выберите состояние</option>
-              <option value="1">сухая</option>
-              <option value="2">мокрая</option>
-              <option value="3">обледенненая</option>
+              <option value="0.7">сухая</option>
+              <option value="0.5">мокрая</option>
+              <option value="0.4">обледенненая</option>
+            </select>
+            <select class="aircraft-parameters__select" name="" id="" v-model="runwayState" v-else="runwayCoating == 'asphalt'">
+              <option class="aircraft-parameters__option" disabled value="">Выберите состояние</option>
+              <option value="0.8">сухая</option>
+              <option value="0.5">мокрая</option>
+              <option value="0.4">обледенненая</option>
             </select>
           </div>
 
           <div class="diplom__btn-wr">
-            <button class="diplom__btn-calc" type="button">Расчитать</button>
+            <button class="diplom__btn-calc" type="button" v-on:click="calculation">Расчитать</button>
           </div>
+
+          <p class="foto-block__text">{{ total }}</p>
 
         </div>
       </section>
