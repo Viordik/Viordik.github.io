@@ -29,12 +29,15 @@ new Vue({
     revers: '',
     flaps: '',
     angleFlaps: '',
+    angleFlapsClass: '',
     stateFlaps: false,
     slats: '',
     angleSlats: '',
+    angleSlatsClass: '',
     stateSlats: false,
-    runwayCoating:'',
-    runwayState: ''
+    runwayCoating: '',
+    runwayState: '',
+    total: ''
   },
   watch: {
     speedStart: function () {
@@ -58,22 +61,24 @@ new Vue({
       if (this.flaps == 0) {
         console.log(this.flaps);
         this.stateFlaps = true;
-        this.angleFlaps = 'disabled';
+        this.angleFlapsClass = 'disabled';
+        this.angleFlaps = 0;
       } else if (this.flaps == 1) {
         console.log(this.flaps);
         this.stateFlaps = false;
-        this.angleFlaps = '';
+        this.angleFlapsClass = '';
       }
     },
     slats: function () {
       if (this.slats == 0) {
         this.stateSlats = true;
-        this.angleSlats = 'disabled';
+        this.angleSlatsClass = 'disabled';
+        this.angleSlats = 0;
       } else if (this.slats == 1) {
         this.stateSlats = false;
-        this.angleSlats = '';
+        this.angleSlatsClass = '';
       }
-      console.log(this.angleSlats);
+
     },
     angleFlaps: function () {
       console.log(this.angleFlaps);
@@ -89,12 +94,15 @@ new Vue({
     }
   },
   methods: {
-
+    calculation: function () {
+      const allFieldValue = ((+this.speed) + (+this.weight) + (+this.revers) + (+this.angleFlaps) + (+this.angleSlats) + (+this.runwayState));
+      return this.total = allFieldValue;
+    }
   },
   computed: {
     speed: function () {
       return this.speedStart - 20;
-    }
+    },
   },
 });
 
