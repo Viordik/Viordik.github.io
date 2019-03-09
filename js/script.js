@@ -36,9 +36,10 @@ new Vue({
     angleSlatsClass: '', //Переменная для класса disabled
     stateSlats: false, //Переменная для атрибута disabled
     runwayCoating: '', //Покрытие ВПП
-    runwayState: '', //Состояние ВПП, Коэффициент трения торможения
+    runwayState: '', //Состояние ВПП, Коэффициент сцепления при различном покрытии и состояние ВПП
+    dragFrictionCoefficient: '', //Коэффициент трения торможения при различных состояниях ВПП
     total: '', //Длина тормозного пути
-    wingArea: 184.17, //Площадь крыла
+    wingArea: 184, //Площадь крыла
     airDensity: 0.125, //Плотность воздуха
     cY: 0.4, //Коэффициент лобового сопротивления, Если закрылки и предкрылки равны 0 тогда коэффициент равен 1
     cX: 0.3, //Коэффициент подъемной силы, Если закрылки и предкрылки равны 0 тогда коэффициент равен 0.1
@@ -52,6 +53,7 @@ new Vue({
     frictionForce: '', //Сила трения
     speedDrag: 33, //120км/ч Скорость(м/с) для расчета Силы лобового сопротивдения и Величины подъемной силы
     speedMetersPerSecond: '', //Переменная для хранения скорости, скорость захода в м/с
+    text: '',
   },
   watch: {
     speedStart: function () {
@@ -94,9 +96,17 @@ new Vue({
       }
     },
     angleFlaps: function () {
+      if(this.angleFlaps == 0 && this.angleSlats == 0) {
+        this.cY = 1;
+        this.cX = 0.1;
+      }
       console.log(this.angleFlaps);
     },
     angleSlats: function () {
+      if(this.angleFlaps == 0 && this.angleSlats == 0) {
+        this.cY = 1;
+        this.cX = 0.1;
+      }
       console.log(this.angleSlats);
     },
     runwayCoating: function () {
@@ -104,6 +114,18 @@ new Vue({
     },
     runwayState: function () {
       console.log(this.runwayState);
+      if (this.runwayState === '0.7' || this.runwayState === '0.8') {
+        this.dragFrictionCoefficient = 0.25;
+        console.log(this.dragFrictionCoefficient);
+      }
+      if (this.runwayState === '0.5') {
+        this.dragFrictionCoefficient = 0.18;
+        console.log(this.dragFrictionCoefficient);
+      }
+      if (this.runwayState === '0.4') {
+        this.dragFrictionCoefficient = 0.05;
+        console.log(this.dragFrictionCoefficient);
+      }
     }
   },
   computed: {
@@ -118,17 +140,19 @@ new Vue({
     calculation: function () {
       // const allFieldValue = ((+this.speed) + (+this.weight) + (+this.revers) + (+this.angleFlaps) + (+this.angleSlats) + (+this.runwayState));
       // return this.total = allFieldValue;
-      this.speedMetersPerSecond = +(this.speedFinal * 1000 / 3600);
-      this.weight = +(this.weight * 1000);
-      this.xFirst = +(this.cX * this.wingArea * (this.airDensity * (Math.pow(this.speedMetersPerSecond, 2)) / 2 ));
-      this.brakingBeginningRun = +(((this.xFirst + this.revers) / this.weight) * this.g);
-      this.xSecond = +(this.cX * this.wingArea * (this.airDensity * (Math.pow(this.speedInTwo, 2)) / 2));
-      this.liftingForce = +(this.cY * this.wingArea * (this.airDensity * (Math.pow(this.speedInTwo, 2)) / 2));
-      this.frictionForce = +(0.05 * (this.weight - this.liftingForce));
-      this.brakingBeginningFinish = ((+this.xSecond + (+this.revers) + (+this.frictionForce)) / (+this.weight)) * +this.g;
-      this.averageAcceleration = +((this.brakingBeginningRun + this.brakingBeginningFinish) / 2);
-      this.total = +((Math.pow(this.speedMetersPerSecond, 2)) / (2 * this.averageAcceleration));
+      this.speedMetersPerSecond = +(this.speedFinal * 1000 / 3600); //Перевод скорости км/ч в м/с
+      this.weight = +(this.weight * 1000); //Перевод массы самолета из тонн в кг
+      this.xFirst = +(this.cX * this.wingArea * (this.airDensity * (Math.pow(this.speedMetersPerSecond, 2)) / 2 )); //Формула для расчета x1 сила лобового сопротивления
+      this.brakingBeginningRun = +(((this.xFirst + this.revers) / this.weight) * this.g); //Формула для расчета Ускорение торможения в начале пробега j1
+      this.xSecond = +(this.cX * this.wingArea * (this.airDensity * (Math.pow(this.speedInTwo, 2)) / 2)); //Формула для расчета x2 Сила лобового сопротивления на скорости, равной половине от скорости касания
+      this.liftingForce = +(this.cY * this.wingArea * (this.airDensity * (Math.pow(this.speedInTwo, 2)) / 2)); //Формула для расчеты Y Величина подъемной силы
+      this.frictionForce = +(this.dragFrictionCoefficient * (this.weight - this.liftingForce)); //Формула для расчета Fтр Сила трения торможения в конце пробега
+      this.brakingBeginningFinish = ((+this.xSecond + (+this.revers) + (+this.frictionForce)) / (+this.weight)) * +this.g; //Формула для расчета j2 ускорение торможения в конце пробега
+      this.averageAcceleration = +((this.brakingBeginningRun + this.brakingBeginningFinish) / 2); //Формула для расчета jср Среднее ускорение торможение
+      this.total = +((Math.pow(this.speedMetersPerSecond, 2)) / (2 * this.averageAcceleration)); //Формула для расчета Lпроб Длина пробега самолета
+      this.text = 'Длина пробега равна:';
 
+      console.log('Коэффициент лобового сопротивления и подъемной силы при 0 значение закрылков и предкрылков: ' + this.cY + ',' + this.cX);
       console.log('скорость в м/с: ' + this.speedMetersPerSecond);
       console.log('масса самолета в кг: ' + this.weight);
       console.log('Сила лобового сопротивления в начале пробега: ' + this.xFirst);
