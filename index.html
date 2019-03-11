@@ -110,7 +110,7 @@
         <p class="developer">Раздел находится в разработке. Данный раздел разрабатывается с использованием Vue.js</p>
 
         <h3>Моделирование посадки воздушного судна ТУ-204-300</h3>
-        <div class="diplom" id="airplane">
+        <form class="diplom" id="airplane">
           <div id="speed-aircraft" class="speed-aircraft">
             <div class="speed-aircraft__approach-wr">
               <label for="approach-speed">Скорость захода на посадку</label>
@@ -118,7 +118,6 @@
             </div>
 
             <div class="speed-aircraft__landing-wr">
-              <!-- <p>Посадочная скорость: <span>{{ calculation }}</span></p> -->
               <label for="landing-speed">Посадочная скорость</label>
               <input id="landing-speed" class="landing-speed" disabled value="0" type="text" v-model="speed">
             </div>
@@ -129,7 +128,7 @@
 
           <div class="aircraft-parameters">
             <label class="aircraft-parameters__text" for="">Масса самолета</label>
-            <select class="aircraft-parameters__select" name="" id="weight-select" v-model="weight">
+            <select class="aircraft-parameters__select" name="" id="weight-select" v-model.lazy="weight">
               <option class="aircraft-parameters__option" disabled value="">Выберите массу самолета</option>
               <option class="aircraft-parameters__option" id="option">80</option>
               <option class="aircraft-parameters__option" id="option">85</option>
@@ -141,17 +140,17 @@
 
           <div class="aircraft-parameters">
             <label class="aircraft-parameters__text" for="">Количество отказанных двигателей</label>
-            <select class="aircraft-parameters__select" name="" id="engines-select" v-model="revers">
+            <select class="aircraft-parameters__select" name="" id="engines-select" v-model.lazy="revers">
               <option class="aircraft-parameters__option" disabled value="">Выберите количество двигателей</option>
-              <option class="aircraft-parameters__option" value="12000">Оба двигателя работают</option>
-              <option class="aircraft-parameters__option" value="6000">Один двигатель неисправен</option>
+              <option class="aircraft-parameters__option" value="6400">Оба двигателя работают</option>
+              <option class="aircraft-parameters__option" value="3200">Один двигатель неисправен</option>
               <option class="aircraft-parameters__option" value="0">Два двигателя неисправны</option>
             </select>
           </div>
 
           <div class="aircraft-parameters">
             <label class="aircraft-parameters__text" for="">Закрылки</label>
-            <select class="aircraft-parameters__select" name="" id="flaps" v-model="flaps">
+            <select class="aircraft-parameters__select" name="" id="flaps" v-model.lazy="flaps">
               <option class="aircraft-parameters__option" disabled value="">Выберите работоспособность</option>
               <option class="aircraft-parameters__option" value="1">Исправны</option>
               <option class="aircraft-parameters__option" value="0">Неисправны</option>
@@ -160,7 +159,7 @@
 
           <div class="aircraft-parameters">
             <label class="aircraft-parameters__text" for="">Предкрылки</label>
-            <select class="aircraft-parameters__select" name="" id="slats" v-model="slats">
+            <select class="aircraft-parameters__select" name="" id="slats" v-model.lazy="slats">
               <option class="aircraft-parameters__option" disabled value="">Выберите работоспособность</option>
               <option class="aircraft-parameters__option" value="1">Исправны</option>
               <option class="aircraft-parameters__option" value="0">Неисправны</option>
@@ -194,7 +193,7 @@
 
           <div class="aircraft-parameters">
             <label class="aircraft-parameters__text" for="">Покрытие ВПП</label>
-            <select class="aircraft-parameters__select" name="" id="coating" v-model="runwayCoating">
+            <select class="aircraft-parameters__select" name="" id="coating" v-model.lazy="runwayCoating">
               <option class="aircraft-parameters__option" disabled value="">Выберите покрытие</option>
               <option class="aircraft-parameters__option" value="cement">Цементно-бетонное</option>
               <option class="aircraft-parameters__option" value="asphalt">Асфальто-бетонное</option>
@@ -203,14 +202,14 @@
 
           <div class="aircraft-parameters">
             <label class="aircraft-parameters__text" for="">Состояние ВПП</label>
-            <select class="aircraft-parameters__select" name="" id="" v-model="runwayState" v-if="runwayCoating == 'cement'">
-              <option class="aircraft-parameters__option" disabled value="">Выберите состояние</option>
+            <select class="aircraft-parameters__select" name="" id="" v-model.lazy="runwayState" v-if="runwayCoating == 'cement'">
+              <option class="aircraft-parameters__option" disabled selected value="">Выберите состояние</option>
               <option value="0.7">сухая</option>
               <option value="0.5">мокрая</option>
               <option value="0.4">обледенненая</option>
             </select>
-            <select class="aircraft-parameters__select" name="" id="" v-model="runwayState" v-else="runwayCoating == 'asphalt'">
-              <option class="aircraft-parameters__option" disabled value="">Выберите состояние</option>
+            <select class="aircraft-parameters__select" name="" id="" v-model.lazy="runwayState" v-else="runwayCoating == 'asphalt'">
+              <option class="aircraft-parameters__option" disabled selected value="">Выберите состояние</option>
               <option value="0.8">сухая</option>
               <option value="0.5">мокрая</option>
               <option value="0.4">обледенненая</option>
@@ -221,9 +220,9 @@
             <button class="diplom__btn-calc" type="button" v-on:click="calculation">Расчитать</button>
           </div>
 
-          <p class="foto-block__text">{{ total }}</p>
+          <p class="foto-block__text">{{ text }} {{ total }}</p>
 
-        </div>
+        </form>
       </section>
 
       <section id="foto" class="foto-block">
@@ -320,16 +319,16 @@
     <footer class="page-footer">
       <section class="footer-block">
         <div class="contacts">
-          <a href="#" class="contacts__link">
+          <a href="https://www.instagram.com/close.bird/" target="_blank" class="contacts__link">
             <img class="contacts__img" src="./img/icon-instagram.svg" alt="icon-instagram">
           </a>
           <a href="#" class="contacts__link">
             <img class="contacts__img" src="./img/icon-telegram.svg" alt="icon-telegram">
           </a>
-          <a href="#" class="contacts__link">
-            <img class="contacts__img" src="./img/icon-whats-app.svg" alt="icon-whats-app">
+          <a href="https://github.com/Viordik?tab=repositories" target="_blank" class="contacts__link">
+            <img class="contacts__img" src="./img/icons-github.svg" alt="icons-github">
           </a>
-          <a href="#" class="contacts__link">
+          <a href="mailto:fataliev2009@rambler.ru" class="contacts__link">
             <img class="contacts__img" src="./img/icon-mail.svg" alt="icon-mail">
           </a>
         </div>
