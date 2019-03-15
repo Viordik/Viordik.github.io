@@ -128,7 +128,7 @@
 
           <div class="aircraft-parameters">
             <label class="aircraft-parameters__text" for="">Масса самолета</label>
-            <select class="aircraft-parameters__select" name="" id="weight-select" v-model.lazy="weight">
+            <select class="aircraft-parameters__select" name="" id="weight-select" v-model="weight">
               <option class="aircraft-parameters__option" disabled value="">Выберите массу самолета</option>
               <option class="aircraft-parameters__option" id="option">80</option>
               <option class="aircraft-parameters__option" id="option">85</option>
@@ -140,7 +140,7 @@
 
           <div class="aircraft-parameters">
             <label class="aircraft-parameters__text" for="">Количество отказанных двигателей</label>
-            <select class="aircraft-parameters__select" name="" id="engines-select" v-model.lazy="revers">
+            <select class="aircraft-parameters__select" name="" id="engines-select" v-model="revers">
               <option class="aircraft-parameters__option" disabled value="">Выберите количество двигателей</option>
               <option class="aircraft-parameters__option" value="6400">Оба двигателя работают</option>
               <option class="aircraft-parameters__option" value="3200">Один двигатель неисправен</option>
@@ -150,7 +150,7 @@
 
           <div class="aircraft-parameters">
             <label class="aircraft-parameters__text" for="">Закрылки</label>
-            <select class="aircraft-parameters__select" name="" id="flaps" v-model.lazy="flaps">
+            <select class="aircraft-parameters__select" name="" id="flaps" v-model="flaps">
               <option class="aircraft-parameters__option" disabled value="">Выберите работоспособность</option>
               <option class="aircraft-parameters__option" value="1">Исправны</option>
               <option class="aircraft-parameters__option" value="0">Неисправны</option>
@@ -159,7 +159,7 @@
 
           <div class="aircraft-parameters">
             <label class="aircraft-parameters__text" for="">Предкрылки</label>
-            <select class="aircraft-parameters__select" name="" id="slats" v-model.lazy="slats">
+            <select class="aircraft-parameters__select" name="" id="slats" v-model="slats">
               <option class="aircraft-parameters__option" disabled value="">Выберите работоспособность</option>
               <option class="aircraft-parameters__option" value="1">Исправны</option>
               <option class="aircraft-parameters__option" value="0">Неисправны</option>
@@ -171,11 +171,11 @@
             <label class="aircraft-parameters__text" for="">Угол отклонения закрылков</label>
             <select class="aircraft-parameters__select" name="" id="angle-flaps" v-model="angleFlaps" v-bind:class="angleFlapsClass" v-bind:disabled="stateFlaps">
               <option class="aircraft-parameters__option" disabled value="">Выберите угол отклонения</option>
-              <option class="aircraft-parameters__option angle-flaps" value="0">0</option>
-              <option class="aircraft-parameters__option angle-flaps" value="8">8</option>
-              <option class="aircraft-parameters__option angle-flaps" value="18">18</option>
-              <option class="aircraft-parameters__option angle-flaps" value="26">26</option>
-              <option class="aircraft-parameters__option angle-flaps" value="37">37</option>
+              <option class="aircraft-parameters__option angle-flaps">0</option>
+              <option class="aircraft-parameters__option angle-flaps">8</option>
+              <option class="aircraft-parameters__option angle-flaps">18</option>
+              <option class="aircraft-parameters__option angle-flaps">26</option>
+              <option class="aircraft-parameters__option angle-flaps">37</option>
             </select>
           </div>
 
@@ -184,16 +184,22 @@
             <label class="aircraft-parameters__text" for="">Угол отклонения предкрылков</label>
             <select class="aircraft-parameters__select" name="" id="angle-slats" v-model="angleSlats" v-bind:class="angleSlatsClass" v-bind:disabled="stateSlats">
               <option class="aircraft-parameters__option" disabled value="">Выберите угол отклонения</option>
-              <option class="aircraft-parameters__option" value="0">0</option>
-              <option class="aircraft-parameters__option" value="9">9</option>
-              <option class="aircraft-parameters__option" value="19">19</option>
-              <option class="aircraft-parameters__option" value="23">23</option>
+              <option class="aircraft-parameters__option">0</option>
+              <option class="aircraft-parameters__option">9</option>
+              <option class="aircraft-parameters__option">19</option>
+              <option class="aircraft-parameters__option">23</option>
             </select>
+            <p>{{ changeCxCy }}</p>
+            <p class="error error--warning">{{ rules }}</p>
+            <p class="error error--warning">{{ rulesSecond }}</p>
+            <p class="error error--warning">{{ rulesThird }}</p>
+            <p class="error error--warning">{{ rulesFourth }}</p>
+            <p class="error error--warning">{{ rulesFive }}</p>
           </div>
 
           <div class="aircraft-parameters">
             <label class="aircraft-parameters__text" for="">Покрытие ВПП</label>
-            <select class="aircraft-parameters__select" name="" id="coating" v-model.lazy="runwayCoating">
+            <select class="aircraft-parameters__select" name="" id="coating" v-model="runwayCoating">
               <option class="aircraft-parameters__option" disabled value="">Выберите покрытие</option>
               <option class="aircraft-parameters__option" value="cement">Цементно-бетонное</option>
               <option class="aircraft-parameters__option" value="asphalt">Асфальто-бетонное</option>
@@ -202,22 +208,26 @@
 
           <div class="aircraft-parameters">
             <label class="aircraft-parameters__text" for="">Состояние ВПП</label>
-            <select class="aircraft-parameters__select" name="" id="" v-model.lazy="runwayState" v-if="runwayCoating == 'cement'">
-              <option class="aircraft-parameters__option" disabled selected value="">Выберите состояние</option>
-              <option value="0.7">сухая</option>
-              <option value="0.5">мокрая</option>
-              <option value="0.4">обледенненая</option>
-            </select>
-            <select class="aircraft-parameters__select" name="" id="" v-model.lazy="runwayState" v-else="runwayCoating == 'asphalt'">
-              <option class="aircraft-parameters__option" disabled selected value="">Выберите состояние</option>
-              <option value="0.8">сухая</option>
-              <option value="0.5">мокрая</option>
-              <option value="0.4">обледенненая</option>
-            </select>
+            <template v-if="runwayCoating == 'cement'">
+              <select class="aircraft-parameters__select" name="" id="" v-model="runwayState">
+                <option class="aircraft-parameters__option" disabled selected value="">Выберите состояние</option>
+                <option value="0.7">сухая</option>
+                <option value="0.5">мокрая</option>
+                <option value="0.4">обледенненая</option>
+              </select>
+            </template>
+            <template v-else="runwayCoating == 'asphalt'">
+              <select class="aircraft-parameters__select" name="" id="" v-model="runwayState">
+                <option class="aircraft-parameters__option" disabled selected value="">Выберите состояние</option>
+                <option value="0.8">сухая</option>
+                <option value="0.5">мокрая</option>
+                <option value="0.4">обледенненая</option>
+              </select>
+            </template>
           </div>
 
           <div class="diplom__btn-wr">
-            <button class="diplom__btn-calc" type="button" v-on:click="calculation">Расчитать</button>
+            <button class="diplom__btn-calc" v-on:click.prevent="calculation">Расчитать</button>
           </div>
 
           <p class="foto-block__text">{{ text }} {{ total }}</p>
