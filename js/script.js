@@ -55,6 +55,7 @@ new Vue({
     speedDrag: 33, //120км/ч Скорость(м/с) для расчета Силы лобового сопротивдения и Величины подъемной силы
     speedMetersPerSecond: '', //Переменная для хранения скорости, скорость захода в м/с
     text: '',
+    textRules: '',
     // changeCxCy: '',
   },
   watch: {
@@ -94,24 +95,24 @@ new Vue({
         this.angleSlatsClass = '';
       }
     },
-    angleFlaps: function () {
-      if (this.angleFlaps != 0 && this.angleSlats != 0) {
-        this.cY = 0.4;
-        this.cX = 0.3;
-      } else {
-        this.cY = 1;
-        this.cX = 0.1;
-      }
-    },
-    angleSlats: function () {
-      if (this.angleFlaps != 0 && this.angleSlats != 0) {
-        this.cY = 0.4;
-        this.cX = 0.3;
-      } else {
-        this.cY = 1;
-        this.cX = 0.1;
-      }
-    },
+    // angleFlaps: function () {
+    //   if (this.angleFlaps == 0 && this.angleSlats == 0) {
+    //     this.cY = 1;
+    //     this.cX = 0.1;
+    //   } else {
+    //     this.cY = 0.4;
+    //     this.cX = 0.3;
+    //   }
+    // },
+    // angleSlats: function () {
+    //   if (this.angleFlaps == 0 && this.angleSlats == 0) {
+    //     this.cY = 1;
+    //     this.cX = 0.1;
+    //   } else {
+    //     this.cY = 0.4;
+    //     this.cX = 0.3;
+    //   }
+    // },
     runwayCoating: function () {
       console.log(this.runwayCoating);
     },
@@ -138,22 +139,103 @@ new Vue({
     speedInTwo: function () {
       return (this.speedDrag = this.speedFinal / 2);
     },
-    kek: {
-      get: function () {
-
-      },
-      set: function () {
-        if (this.angleFlaps > 0 && this.angleSlats > 0) {
-          this.cY = 0.4;
-          this.cX = 0.3;
-        } else {
-          this.cY = 1;
-          this.cX = 0.1;
-        }
-        console.log(this.angleFlaps);
-        console.log(this.angleSlats);
+    changeCxCy: function() {
+      if (this.angleFlaps == 0 && this.angleSlats == 0) {
+        return [this.cY = 1, this.cX = 0.1];
+      } else {
+        return [this.cY = 0.4, this.cX = 0.3];
       }
-    }
+    },
+    rules: function() {
+      if (this.weight < 90 && this.revers == 6400 && this.flaps == 1 && this.slats == 1) {
+        if (this.angleFlaps < 26 || this.angleSlats < 23) {
+          return ('Увеличите угол закрылок или предкрылок. Рекомендованный угол закрылок 26-37. Предкрылок 23');
+        }
+        if (this.angleFlaps == 37 && this.angleSlats == 23) {
+          if (this.speedStart < 230) {
+            return ('Скорость слишком мала, увеличите скорость захода на посадку Рекомендуемая скорость в зависимости от массы 90-245; 85-235; 80-230');
+          }
+          if (this.speedStart > 300) {
+            return ('Скорость слишком велика, уменьшите скорость захода на посадку Рекомендуемая скорость в зависимости от массы 90-245; 85-235; 80-230');
+          }
+        }
+        if (this.angleFlaps == 26 && this.angleSlats == 23) {
+          if (this.speedStart < 235) {
+            return ('Скорость слишком мала, увеличте скорость захода на посадку Рекомендуемая скорость в зависимости от массы 90-250; 85-240; 80-235');
+          }
+          if (this.speedStart > 355) {
+            return ('Скорость слишком велика, уменьшите скорость захода на посадку Рекомендуемая скорость в зависимости от массы 90-250; 85-240; 80-235');
+          }
+        }
+      }
+    },
+    rulesSecond: function() {
+      if (this.weight < 90 && this.revers == 6400 && this.flaps == 0 && this.slats == 1) {
+        if (this.angleSlats < 23) {
+          return ('Угол предкрылок не может быть меньше 23');
+        }
+        if (this.speedStart < 283) {
+          return ('Скорость слишком мала, увеличте скорость захода на посадку Рекомендуемая скорость 325');
+        }
+        if (this.speedStart > 375) {
+          return ('Скорость слишком велика, уменьшите скорость захода на посадку Рекомендуемая скорость 325');
+        }
+      }
+    },
+    rulesThird: function() {
+      if (this.weight < 90 && this.revers == 6400 && this.flaps == 1 && this.slats == 0) {
+        if (this.angleFlaps > 18) {
+          return ('Угол закрылок должен быть меньше 18');
+        }
+        if (this.speedStart < 283) {
+          return ('Скорость слишком мала, увеличте скорость захода на посадку Рекомендуемая скорость 325');
+        }
+        if (this.speedStart > 375) {
+          return ('Скорость слишком велика, уменьшите скорость захода на посадку Рекомендуемая скорость 325');
+        }
+      }
+    },
+    rulesFourth: function() {
+      if (this.weight < 90 && this.revers == 6400 && this.flaps == 0 && this.slats == 0) {
+        if (this.speedStart < 283) {
+          return ('Скорость слишком мала, увеличте скорость захода на посадку Рекомендуемая скорость в зависимости от массы 80-332; 85-342; 88-352');
+        }
+        if (this.speedStart > 375) {
+          return ('Скорость слишком велика, уменьшите скорость захода на посадку Рекомендуемая скорость в зависимости от массы 80-332; 85-342; 88-352');
+        }
+      }
+    },
+    rulesFive: function() {
+      if (this.weight > 90 && this.revers == 6400 && this.flaps == 1 && this.slats ==1) {
+        if (this.angleFlaps < 18 || this.angleSlats < 19) {
+          return ('Угол закрылок или предкрылок слишком мал');
+        }
+        if (this.angleFlaps == 18 && this.angleSlats == 19) {
+          if (this.speedStart < 227) {
+            return ('Скорость слишком мала, увеличте скорость захода на посадку Рекомендуемая скорость в зависимости от массы 92, 96-365; 100-280');
+          }
+          if (this.speedStart > 375) {
+            return ('Скорость слишком велика, уменьшите скорость захода на посадку Рекомендуемая скорость в зависимости от массы 92, 96-365; 100-280');
+          }
+        }
+        if (this.angleFlaps == 26 && this.angleSlats == 23) {
+          if (this.speedStart < 227) {
+            return ('Скорость слишком мала, увеличте скорость захода на посадку Рекомендуемая скорость в зависимости от массы 92, 96-260; 100-265');
+          }
+          if (this.speedStart > 355) {
+            return ('Скорость слишком велика, уменьшите скорость захода на посадку Рекомендуемая скорость в зависимости от массы 92, 96-260; 100-265');
+          }
+        }
+        if (this.angleFlaps == 37 && this.angleSlats == 23) {
+          if (this.speedStart < 198) {
+            return ('Скорость слишком мала, увеличте скорость захода на посадку Рекомендуемая скорость в зависимости от массы 92, 96-250; 100-255');
+          }
+          if (this.speedStart > 300) {
+            return ('Скорость слишком велика, уменьшите скорость захода на посадку Рекомендуемая скорость в зависимости от массы 92, 96-250; 100-255');
+          }
+        }
+      }
+    },
   },
   methods: {
     calculation: function () {
@@ -187,17 +269,6 @@ new Vue({
   },
   checkForm: function (e) {
 
-  },
-  changeCxCy: function () {
-    if (this.angleFlaps > 0 && this.angleSlats > 0) {
-      this.cY = 0.4;
-      this.cX = 0.3;
-    } else {
-      this.cY = 1;
-      this.cX = 0.1;
-    }
-    console.log(this.angleFlaps);
-    console.log(this.angleSlats);
   },
 });
 
