@@ -52,11 +52,10 @@ new Vue({
     g: 10, //Скорость свободного падения
     liftingForce: '', //Величина подъемной силы Y
     frictionForce: '', //Сила трения
-    speedDrag: 33, //120км/ч Скорость(м/с) для расчета Силы лобового сопротивдения и Величины подъемной силы
+    speedDrag: 33, //Скорость в конце пробега равна 120 км/ч = 33 м/с, для расчета Силы лобового сопротивдения в конце пробега и Величины подъемной силы
     speedMetersPerSecond: '', //Переменная для хранения скорости, скорость захода в м/с
-    text: '',
-    textRules: '',
-    // changeCxCy: '',
+    textPathLength: '', //Текст Длина пробега равна
+    // textRules: '',
   },
   watch: {
     speedStart: function () {
@@ -74,19 +73,19 @@ new Vue({
       console.log(this.revers);
     },
     flaps: function () {
-      if (this.flaps == 0) {
+      if (this.flaps == 0) { //Если в поле Исправность закрылок выбран пункт Неисправны
         console.log(this.flaps);
-        this.stateFlaps = true;
-        this.angleFlapsClass = 'disabled';
-        this.angleFlaps = 0;
-      } else if (this.flaps == 1) {
+        this.stateFlaps = true; //Добавляем атрибут disabled
+        this.angleFlapsClass = 'disabled'; //Добавлем класс со стилями
+        this.angleFlaps = 0; //Угол закрылок равен 0
+      } else if (this.flaps == 1) { //Если Исправны
         console.log(this.flaps);
-        this.stateFlaps = false;
-        this.angleFlapsClass = '';
+        this.stateFlaps = false; //Убираем атрибут disabled
+        this.angleFlapsClass = ''; //Убираем класс disabled
       }
     },
     slats: function () {
-      if (this.slats == 0) {
+      if (this.slats == 0) { //Тоже самое что и для Закрылок, только для поля Предкрылки
         this.stateSlats = true;
         this.angleSlatsClass = 'disabled';
         this.angleSlats = 0;
@@ -95,28 +94,10 @@ new Vue({
         this.angleSlatsClass = '';
       }
     },
-    // angleFlaps: function () {
-    //   if (this.angleFlaps == 0 && this.angleSlats == 0) {
-    //     this.cY = 1;
-    //     this.cX = 0.1;
-    //   } else {
-    //     this.cY = 0.4;
-    //     this.cX = 0.3;
-    //   }
-    // },
-    // angleSlats: function () {
-    //   if (this.angleFlaps == 0 && this.angleSlats == 0) {
-    //     this.cY = 1;
-    //     this.cX = 0.1;
-    //   } else {
-    //     this.cY = 0.4;
-    //     this.cX = 0.3;
-    //   }
-    // },
     runwayCoating: function () {
       console.log(this.runwayCoating);
     },
-    runwayState: function () {
+    runwayState: function () { //Функция для определения Коэффициента трения торможения в зависимости от состояния полосы
       console.log(this.runwayState);
       if (this.runwayState === '0.7' || this.runwayState === '0.8') {
         this.dragFrictionCoefficient = 0.25;
@@ -133,13 +114,10 @@ new Vue({
     }
   },
   computed: {
-    speed: function () {
+    speed: function () { //Функция для рассчета Посадочной скорости
       return (this.speedFinal = this.speedStart - 20);
     },
-    speedInTwo: function () {
-      return (this.speedDrag = this.speedFinal / 2);
-    },
-    changeCxCy: function() {
+    changeCxCy: function() { //Функция для получения коэффициента лобового сопротивления и подъемной силы, в зависимости от угла закрылков и предкрылков
       if (this.angleFlaps == 0 && this.angleSlats == 0) {
         return [this.cY = 1, this.cX = 0.1];
       } else {
@@ -236,22 +214,23 @@ new Vue({
         }
       }
     },
+    checkForm: function (){
+
+    },
   },
   methods: {
     calculation: function () {
-      // const allFieldValue = ((+this.speed) + (+this.weight) + (+this.revers) + (+this.angleFlaps) + (+this.angleSlats) + (+this.runwayState));
-      // return this.total = allFieldValue;
       this.speedMetersPerSecond = Math.round(+(this.speedFinal * 1000 / 3600)); //Перевод скорости км/ч в м/с
       this.weight = +(this.weight * 1000); //Перевод массы самолета из тонн в кг
       this.xFirst = +(this.cX * this.wingArea * (this.airDensity * (Math.pow(this.speedMetersPerSecond, 2)) / 2)).toFixed(2); //Формула для расчета x1 сила лобового сопротивления
       this.brakingBeginningRun = +(((this.xFirst + this.revers) / this.weight) * this.g).toFixed(2); //Формула для расчета Ускорение торможения в начале пробега j1
-      this.xSecond = Math.round(+(this.cX * this.wingArea * (this.airDensity * (Math.pow(this.speedInTwo, 2)) / 2))); //Формула для расчета x2 Сила лобового сопротивления на скорости, равной половине от скорости касания
-      this.liftingForce = Math.round(+(this.cY * this.wingArea * (this.airDensity * (Math.pow(this.speedInTwo, 2)) / 2))); //Формула для расчеты Y Величина подъемной силы
+      this.xSecond = Math.round(+(this.cX * this.wingArea * ((this.airDensity * (Math.pow(this.speedInTwo, 2))) / 2))); //Формула для расчета x2 Сила лобового сопротивления на скорости, равной 120 км/ч
+      this.liftingForce = Math.round(+(this.cY * this.wingArea * ((this.airDensity * (Math.pow(this.speedInTwo, 2))) / 2))); //Формула для расчеты Y Величина подъемной силы
       this.frictionForce = Math.round(+(this.dragFrictionCoefficient * (this.weight - this.liftingForce))); //Формула для расчета Fтр Сила трения торможения в конце пробега
       this.brakingBeginningFinish = ((+this.xSecond + (+this.revers) + (+this.frictionForce)) / (+this.weight)) * +this.g; //Формула для расчета j2 ускорение торможения в конце пробега
       this.averageAcceleration = +((this.brakingBeginningRun + this.brakingBeginningFinish) / 2); //Формула для расчета jср Среднее ускорение торможение
       this.total = Math.round(+((Math.pow(this.speedMetersPerSecond, 2)) / (2 * this.averageAcceleration))); //Формула для расчета Lпроб Длина пробега самолета
-      this.text = 'Длина пробега равна:';
+      this.textPathLength = 'Длина пробега равна:';
 
       console.log('Коэффициент лобового сопротивления и подъемной силы при 0 значение закрылков и предкрылков: ' + this.cY + ', ' + this.cX);
       console.log('скорость в м/с: ' + this.speedMetersPerSecond);
@@ -266,9 +245,6 @@ new Vue({
       console.log('Длина пробега торможения: ' + this.total);
       console.log('Половина посадочной скорости: ' + this.speedInTwo);
     }
-  },
-  checkForm: function (e) {
-
   },
 });
 
