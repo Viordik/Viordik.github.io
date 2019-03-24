@@ -42,8 +42,8 @@ new Vue({
     total: '', //Длина тормозного пути
     wingArea: 184, //Площадь крыла
     airDensity: 0.125, //Плотность воздуха
-    cY: '', //Коэффициент лобового сопротивления, Если закрылки и предкрылки равны 0 тогда коэффициент равен 1
-    cX: '', //Коэффициент подъемной силы, Если закрылки и предкрылки равны 0 тогда коэффициент равен 0.1
+    cY: '', //Коэффициент подъемной силы, Если закрылки и предкрылки равны 0 тогда коэффициент равен 1
+    cX: '', //Коэффициент лобового сопротивления, Если закрылки и предкрылки равны 0 тогда коэффициент равен 0.1
     brakingBeginningRun: '', //Ускорение торможения в начале пробега j1
     brakingBeginningFinish: '', //Ускорение торможения в конце пробега j2
     averageAcceleration: '', //Среднее ускорение самолета jср
@@ -56,6 +56,7 @@ new Vue({
     speedMetersPerSecond: '', //Переменная для хранения скорости, скорость захода в м/с
     textPathLength: '', //Текст Длина пробега равна
     // textRules: '',
+    // speedInTwo: ''
   },
   watch: {
     speedStart: function () {
@@ -224,15 +225,15 @@ new Vue({
       this.weight = +(this.weight * 1000); //Перевод массы самолета из тонн в кг
       this.xFirst = +(this.cX * this.wingArea * (this.airDensity * (Math.pow(this.speedMetersPerSecond, 2)) / 2)).toFixed(2); //Формула для расчета x1 сила лобового сопротивления
       this.brakingBeginningRun = +(((this.xFirst + this.revers) / this.weight) * this.g).toFixed(2); //Формула для расчета Ускорение торможения в начале пробега j1
-      this.xSecond = Math.round(+(this.cX * this.wingArea * ((this.airDensity * (Math.pow(this.speedInTwo, 2))) / 2))); //Формула для расчета x2 Сила лобового сопротивления на скорости, равной 120 км/ч
-      this.liftingForce = Math.round(+(this.cY * this.wingArea * ((this.airDensity * (Math.pow(this.speedInTwo, 2))) / 2))); //Формула для расчеты Y Величина подъемной силы
+      this.xSecond = Math.round(+(this.cX * this.wingArea * ((this.airDensity * (Math.pow(this.speedDrag, 2))) / 2))); //Формула для расчета x2 Сила лобового сопротивления на скорости, равной 120 км/ч
+      this.liftingForce = Math.round(+(this.cY * this.wingArea * ((this.airDensity * (Math.pow(this.speedDrag, 2))) / 2))); //Формула для расчеты Y Величина подъемной силы
       this.frictionForce = Math.round(+(this.dragFrictionCoefficient * (this.weight - this.liftingForce))); //Формула для расчета Fтр Сила трения торможения в конце пробега
       this.brakingBeginningFinish = ((+this.xSecond + (+this.revers) + (+this.frictionForce)) / (+this.weight)) * +this.g; //Формула для расчета j2 ускорение торможения в конце пробега
       this.averageAcceleration = +((this.brakingBeginningRun + this.brakingBeginningFinish) / 2); //Формула для расчета jср Среднее ускорение торможение
       this.total = Math.round(+((Math.pow(this.speedMetersPerSecond, 2)) / (2 * this.averageAcceleration))); //Формула для расчета Lпроб Длина пробега самолета
       this.textPathLength = 'Длина пробега равна:';
 
-      console.log('Коэффициент лобового сопротивления и подъемной силы при 0 значение закрылков и предкрылков: ' + this.cY + ', ' + this.cX);
+      console.log('Угол отклонения закрылков: ' + this.angleFlaps + '. ' + 'Угол отклонения предкрылков: ' + this.angleSlats + '. ' + 'Коэффициент подъемной силы: ' + this.cY + '. ' + 'Коэффициент лобового сопротивления: ' + this.cX);
       console.log('скорость в м/с: ' + this.speedMetersPerSecond);
       console.log('масса самолета в кг: ' + this.weight);
       console.log('Сила лобового сопротивления в начале пробега: ' + this.xFirst);
@@ -243,7 +244,7 @@ new Vue({
       console.log('Ускорение торможения в конце пробега: ' + this.brakingBeginningFinish);
       console.log('Среднее ускорение самолета: ' + this.averageAcceleration);
       console.log('Длина пробега торможения: ' + this.total);
-      console.log('Половина посадочной скорости: ' + this.speedInTwo);
+      // console.log('Половина посадочной скорости: ' + this.speedDrag);
     }
   },
 });
